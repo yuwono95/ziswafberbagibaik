@@ -256,6 +256,26 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 62,
+                'title' => 'bank_create',
+            ],
+            [
+                'id'    => 63,
+                'title' => 'bank_edit',
+            ],
+            [
+                'id'    => 64,
+                'title' => 'bank_show',
+            ],
+            [
+                'id'    => 65,
+                'title' => 'bank_delete',
+            ],
+            [
+                'id'    => 66,
+                'title' => 'bank_access',
+            ],
+            [
+                'id'    => 67,
                 'title' => 'profile_password_edit',
             ],
         ];

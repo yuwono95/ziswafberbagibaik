@@ -9,6 +9,8 @@ use Illuminate\Support\Str;
 class GlobalSearchController extends Controller
 {
     private $models = [
+        'InputPerolehan' => 'cruds.inputPerolehan.title',
+        'Bank'           => 'cruds.bank.title',
     ];
 
     public function search(Request $request)

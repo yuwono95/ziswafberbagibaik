@@ -66,9 +66,15 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Input Perolehan
     Route::delete('input-perolehans/destroy', 'InputPerolehanController@massDestroy')->name('input-perolehans.massDestroy');
+    Route::post('input-perolehans/media', 'InputPerolehanController@storeMedia')->name('input-perolehans.storeMedia');
+    Route::post('input-perolehans/ckmedia', 'InputPerolehanController@storeCKEditorImages')->name('input-perolehans.storeCKEditorImages');
     Route::post('input-perolehans/parse-csv-import', 'InputPerolehanController@parseCsvImport')->name('input-perolehans.parseCsvImport');
     Route::post('input-perolehans/process-csv-import', 'InputPerolehanController@processCsvImport')->name('input-perolehans.processCsvImport');
     Route::resource('input-perolehans', 'InputPerolehanController');
+
+    // Bank
+    Route::delete('banks/destroy', 'BankController@massDestroy')->name('banks.massDestroy');
+    Route::resource('banks', 'BankController');
 
     Route::get('global-search', 'GlobalSearchController@search')->name('globalSearch');
     Route::get('team-members', 'TeamMembersController@index')->name('team-members.index');

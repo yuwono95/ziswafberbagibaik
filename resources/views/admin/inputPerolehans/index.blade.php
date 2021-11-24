@@ -29,6 +29,12 @@
                         {{ trans('cruds.inputPerolehan.fields.id') }}
                     </th>
                     <th>
+                        {{ trans('cruds.inputPerolehan.fields.namadonatur') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.inputPerolehan.fields.nomorhp') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.inputPerolehan.fields.zakatprofesi') }}
                     </th>
                     <th>
@@ -48,6 +54,12 @@
                     </th>
                     <th>
                         {{ trans('cruds.inputPerolehan.fields.infaqkesehatan') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.inputPerolehan.fields.namabank') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.inputPerolehan.fields.buktitransfer') }}
                     </th>
                     <th>
                         &nbsp;
@@ -79,6 +91,22 @@
                     </td>
                     <td>
                         <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                    </td>
+                    <td>
+                        <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                    </td>
+                    <td>
+                        <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                    </td>
+                    <td>
+                        <select class="search">
+                            <option value>{{ trans('global.all') }}</option>
+                            @foreach($banks as $key => $item)
+                                <option value="{{ $item->namabank }}">{{ $item->namabank }}</option>
+                            @endforeach
+                        </select>
+                    </td>
+                    <td>
                     </td>
                     <td>
                     </td>
@@ -136,6 +164,8 @@
     columns: [
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
+{ data: 'namadonatur', name: 'namadonatur' },
+{ data: 'nomorhp', name: 'nomorhp' },
 { data: 'zakatprofesi', name: 'zakatprofesi' },
 { data: 'zakatmaal', name: 'zakatmaal' },
 { data: 'infaq', name: 'infaq' },
@@ -143,6 +173,8 @@
 { data: 'wakafpendidikan', name: 'wakafpendidikan' },
 { data: 'wakafproduktif', name: 'wakafproduktif' },
 { data: 'infaqkesehatan', name: 'infaqkesehatan' },
+{ data: 'namabank_namabank', name: 'namabank.namabank' },
+{ data: 'buktitransfer', name: 'buktitransfer', sortable: false, searchable: false },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,
