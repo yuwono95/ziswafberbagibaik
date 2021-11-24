@@ -71,6 +71,16 @@
                 <span class="help-block">{{ trans('cruds.inputPerolehan.fields.wakafproduktif_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="infaqkesehatan">{{ trans('cruds.inputPerolehan.fields.infaqkesehatan') }}</label>
+                <input class="form-control {{ $errors->has('infaqkesehatan') ? 'is-invalid' : '' }}" type="number" name="infaqkesehatan" id="infaqkesehatan" value="{{ old('infaqkesehatan', $inputPerolehan->infaqkesehatan) }}" step="0.01">
+                @if($errors->has('infaqkesehatan'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('infaqkesehatan') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.inputPerolehan.fields.infaqkesehatan_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>

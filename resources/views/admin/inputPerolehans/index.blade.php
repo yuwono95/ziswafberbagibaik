@@ -47,11 +47,17 @@
                         {{ trans('cruds.inputPerolehan.fields.wakafproduktif') }}
                     </th>
                     <th>
+                        {{ trans('cruds.inputPerolehan.fields.infaqkesehatan') }}
+                    </th>
+                    <th>
                         &nbsp;
                     </th>
                 </tr>
                 <tr>
                     <td>
+                    </td>
+                    <td>
+                        <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                     </td>
                     <td>
                         <input class="search" type="text" placeholder="{{ trans('global.search') }}">
@@ -136,6 +142,7 @@
 { data: 'sedekah', name: 'sedekah' },
 { data: 'wakafpendidikan', name: 'wakafpendidikan' },
 { data: 'wakafproduktif', name: 'wakafproduktif' },
+{ data: 'infaqkesehatan', name: 'infaqkesehatan' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,
