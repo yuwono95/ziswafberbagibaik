@@ -25,6 +25,22 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.inputPerolehan.fields.namadonatur') }}
+                        </th>
+                        <td>
+                            {{ $inputPerolehan->namadonatur }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.inputPerolehan.fields.nomorhp') }}
+                        </th>
+                        <td>
+                            {{ $inputPerolehan->nomorhp }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.inputPerolehan.fields.zakatprofesi') }}
                         </th>
                         <td>
@@ -77,6 +93,26 @@
                         </th>
                         <td>
                             {{ $inputPerolehan->infaqkesehatan }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.inputPerolehan.fields.namabank') }}
+                        </th>
+                        <td>
+                            {{ $inputPerolehan->namabank->namabank ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.inputPerolehan.fields.buktitransfer') }}
+                        </th>
+                        <td>
+                            @if($inputPerolehan->buktitransfer)
+                                <a href="{{ $inputPerolehan->buktitransfer->getUrl() }}" target="_blank" style="display: inline-block">
+                                    <img src="{{ $inputPerolehan->buktitransfer->getUrl('thumb') }}">
+                                </a>
+                            @endif
                         </td>
                     </tr>
                 </tbody>

@@ -10,6 +10,8 @@ class CreateInputPerolehansTable extends Migration
     {
         Schema::create('input_perolehans', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('namadonatur')->nullable();
+            $table->string('nomorhp')->nullable();
             $table->decimal('zakatprofesi', 15, 2)->nullable();
             $table->decimal('zakatmaal', 15, 2)->nullable();
             $table->decimal('infaq', 15, 2)->nullable();

@@ -16,6 +16,19 @@ class StoreInputPerolehanRequest extends FormRequest
 
     public function rules()
     {
-        return [];
+        return [
+            'namadonatur' => [
+                'string',
+                'nullable',
+            ],
+            'nomorhp' => [
+                'string',
+                'nullable',
+            ],
+            'namabank_id' => [
+                'required',
+                'integer',
+            ],
+        ];
     }
 }
