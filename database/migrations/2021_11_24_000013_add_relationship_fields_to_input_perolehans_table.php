@@ -10,7 +10,6 @@ class AddRelationshipFieldsToInputPerolehansTable extends Migration
     {
         Schema::table('input_perolehans', function (Blueprint $table) {
             $table->unsignedBigInteger('team_id')->nullable();
-            $table->foreign('team_id', 'team_fk_5407659')->references('id')->on('teams');
         });
     }
 }
