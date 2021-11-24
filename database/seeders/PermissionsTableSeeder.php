@@ -76,6 +76,186 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 17,
+                'title' => 'report_access',
+            ],
+            [
+                'id'    => 18,
+                'title' => 'top_ten_anggotum_create',
+            ],
+            [
+                'id'    => 19,
+                'title' => 'top_ten_anggotum_edit',
+            ],
+            [
+                'id'    => 20,
+                'title' => 'top_ten_anggotum_show',
+            ],
+            [
+                'id'    => 21,
+                'title' => 'top_ten_anggotum_delete',
+            ],
+            [
+                'id'    => 22,
+                'title' => 'top_ten_anggotum_access',
+            ],
+            [
+                'id'    => 23,
+                'title' => 'perolehan_upa_create',
+            ],
+            [
+                'id'    => 24,
+                'title' => 'perolehan_upa_edit',
+            ],
+            [
+                'id'    => 25,
+                'title' => 'perolehan_upa_show',
+            ],
+            [
+                'id'    => 26,
+                'title' => 'perolehan_upa_delete',
+            ],
+            [
+                'id'    => 27,
+                'title' => 'perolehan_upa_access',
+            ],
+            [
+                'id'    => 28,
+                'title' => 'perolehan_sendiri_create',
+            ],
+            [
+                'id'    => 29,
+                'title' => 'perolehan_sendiri_edit',
+            ],
+            [
+                'id'    => 30,
+                'title' => 'perolehan_sendiri_show',
+            ],
+            [
+                'id'    => 31,
+                'title' => 'perolehan_sendiri_delete',
+            ],
+            [
+                'id'    => 32,
+                'title' => 'perolehan_sendiri_access',
+            ],
+            [
+                'id'    => 33,
+                'title' => 'perolehan_dpc_create',
+            ],
+            [
+                'id'    => 34,
+                'title' => 'perolehan_dpc_edit',
+            ],
+            [
+                'id'    => 35,
+                'title' => 'perolehan_dpc_show',
+            ],
+            [
+                'id'    => 36,
+                'title' => 'perolehan_dpc_delete',
+            ],
+            [
+                'id'    => 37,
+                'title' => 'perolehan_dpc_access',
+            ],
+            [
+                'id'    => 38,
+                'title' => 'top_ten_upa_create',
+            ],
+            [
+                'id'    => 39,
+                'title' => 'top_ten_upa_edit',
+            ],
+            [
+                'id'    => 40,
+                'title' => 'top_ten_upa_show',
+            ],
+            [
+                'id'    => 41,
+                'title' => 'top_ten_upa_delete',
+            ],
+            [
+                'id'    => 42,
+                'title' => 'top_ten_upa_access',
+            ],
+            [
+                'id'    => 43,
+                'title' => 'perolehan_semua_dpc_create',
+            ],
+            [
+                'id'    => 44,
+                'title' => 'perolehan_semua_dpc_edit',
+            ],
+            [
+                'id'    => 45,
+                'title' => 'perolehan_semua_dpc_show',
+            ],
+            [
+                'id'    => 46,
+                'title' => 'perolehan_semua_dpc_delete',
+            ],
+            [
+                'id'    => 47,
+                'title' => 'perolehan_semua_dpc_access',
+            ],
+            [
+                'id'    => 48,
+                'title' => 'team_create',
+            ],
+            [
+                'id'    => 49,
+                'title' => 'team_edit',
+            ],
+            [
+                'id'    => 50,
+                'title' => 'team_show',
+            ],
+            [
+                'id'    => 51,
+                'title' => 'team_delete',
+            ],
+            [
+                'id'    => 52,
+                'title' => 'team_access',
+            ],
+            [
+                'id'    => 53,
+                'title' => 'user_alert_create',
+            ],
+            [
+                'id'    => 54,
+                'title' => 'user_alert_show',
+            ],
+            [
+                'id'    => 55,
+                'title' => 'user_alert_delete',
+            ],
+            [
+                'id'    => 56,
+                'title' => 'user_alert_access',
+            ],
+            [
+                'id'    => 57,
+                'title' => 'input_perolehan_create',
+            ],
+            [
+                'id'    => 58,
+                'title' => 'input_perolehan_edit',
+            ],
+            [
+                'id'    => 59,
+                'title' => 'input_perolehan_show',
+            ],
+            [
+                'id'    => 60,
+                'title' => 'input_perolehan_delete',
+            ],
+            [
+                'id'    => 61,
+                'title' => 'input_perolehan_access',
+            ],
+            [
+                'id'    => 62,
                 'title' => 'profile_password_edit',
             ],
         ];
