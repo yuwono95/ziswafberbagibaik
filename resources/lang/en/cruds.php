@@ -159,6 +159,8 @@ return [
             'deleted_at_helper'      => ' ',
             'team'                   => 'Team',
             'team_helper'            => ' ',
+            'infaqkesehatan'         => 'Taawun Sihi',
+            'infaqkesehatan_helper'  => ' ',
         ],
     ],
 ];

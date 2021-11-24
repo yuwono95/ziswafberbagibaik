@@ -28,6 +28,7 @@ class InputPerolehan extends Model
         'wakafpendidikan',
         'wakafproduktif',
         'created_at',
+        'infaqkesehatan',
         'updated_at',
         'deleted_at',
         'team_id',

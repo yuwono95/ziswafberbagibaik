@@ -71,6 +71,14 @@
                             {{ $inputPerolehan->wakafproduktif }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.inputPerolehan.fields.infaqkesehatan') }}
+                        </th>
+                        <td>
+                            {{ $inputPerolehan->infaqkesehatan }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

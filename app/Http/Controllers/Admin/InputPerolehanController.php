@@ -65,6 +65,9 @@ class InputPerolehanController extends Controller
             $table->editColumn('wakafproduktif', function ($row) {
                 return $row->wakafproduktif ? $row->wakafproduktif : '';
             });
+            $table->editColumn('infaqkesehatan', function ($row) {
+                return $row->infaqkesehatan ? $row->infaqkesehatan : '';
+            });
 
             $table->rawColumns(['actions', 'placeholder']);
 
