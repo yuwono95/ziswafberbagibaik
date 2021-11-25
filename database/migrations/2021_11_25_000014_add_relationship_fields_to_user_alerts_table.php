@@ -10,6 +10,7 @@ class AddRelationshipFieldsToUserAlertsTable extends Migration
     {
         Schema::table('user_alerts', function (Blueprint $table) {
             $table->unsignedBigInteger('team_id')->nullable();
+            $table->foreign('team_id', 'team_fk_5407660')->references('id')->on('teams');
         });
     }
 }
