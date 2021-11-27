@@ -38,6 +38,12 @@
                         {{ trans('cruds.user.fields.email_verified_at') }}
                     </th>
                     <th>
+                        {{ trans('cruds.user.fields.approved') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.user.fields.verified') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.user.fields.roles') }}
                     </th>
                     <th>
@@ -58,6 +64,10 @@
                     </td>
                     <td>
                         <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                    </td>
+                    <td>
+                    </td>
+                    <td>
                     </td>
                     <td>
                         <select class="search">
@@ -126,6 +136,8 @@
 { data: 'name', name: 'name' },
 { data: 'email', name: 'email' },
 { data: 'email_verified_at', name: 'email_verified_at' },
+{ data: 'approved', name: 'approved' },
+{ data: 'verified', name: 'verified' },
 { data: 'roles', name: 'roles.title' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
