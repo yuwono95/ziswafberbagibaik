@@ -62,6 +62,9 @@
                         {{ trans('cruds.inputPerolehan.fields.buktitransfer') }}
                     </th>
                     <th>
+                        {{ trans('cruds.inputPerolehan.fields.verified') }}
+                    </th>
+                    <th>
                         &nbsp;
                     </th>
                 </tr>
@@ -105,6 +108,8 @@
                                 <option value="{{ $item->namabank }}">{{ $item->namabank }}</option>
                             @endforeach
                         </select>
+                    </td>
+                    <td>
                     </td>
                     <td>
                     </td>
@@ -175,6 +180,7 @@
 { data: 'infaqkesehatan', name: 'infaqkesehatan' },
 { data: 'namabank_namabank', name: 'namabank.namabank' },
 { data: 'buktitransfer', name: 'buktitransfer', sortable: false, searchable: false },
+{ data: 'verified', name: 'verified' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

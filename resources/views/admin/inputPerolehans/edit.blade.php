@@ -126,6 +126,19 @@
                 <span class="help-block">{{ trans('cruds.inputPerolehan.fields.buktitransfer_helper') }}</span>
             </div>
             <div class="form-group">
+                <div class="form-check {{ $errors->has('verified') ? 'is-invalid' : '' }}">
+                    <input type="hidden" name="verified" value="0">
+                    <input class="form-check-input" type="checkbox" name="verified" id="verified" value="1" {{ $inputPerolehan->verified || old('verified', 0) === 1 ? 'checked' : '' }}>
+                    <label class="form-check-label" for="verified">{{ trans('cruds.inputPerolehan.fields.verified') }}</label>
+                </div>
+                @if($errors->has('verified'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('verified') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.inputPerolehan.fields.verified_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>

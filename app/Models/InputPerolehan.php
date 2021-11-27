@@ -45,6 +45,7 @@ class InputPerolehan extends Model implements HasMedia
         'created_at',
         'infaqkesehatan',
         'namabank_id',
+        'verified',
         'updated_at',
         'deleted_at',
         'team_id',
