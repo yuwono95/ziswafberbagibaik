@@ -19,6 +19,7 @@ class CreateInputPerolehansTable extends Migration
             $table->decimal('wakafpendidikan', 15, 2)->nullable();
             $table->decimal('wakafproduktif', 15, 2)->nullable();
             $table->decimal('infaqkesehatan', 15, 2)->nullable();
+            $table->boolean('verified')->default(0)->nullable();
             $table->timestamps();
         });
     }

@@ -93,8 +93,11 @@ class InputPerolehanController extends Controller
 
                 return '';
             });
+            $table->editColumn('verified', function ($row) {
+                return '<input type="checkbox" disabled ' . ($row->verified ? 'checked' : null) . '>';
+            });
 
-            $table->rawColumns(['actions', 'placeholder', 'namabank', 'buktitransfer']);
+            $table->rawColumns(['actions', 'placeholder', 'namabank', 'buktitransfer', 'verified']);
 
             return $table->make(true);
         }

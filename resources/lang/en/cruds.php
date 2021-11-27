@@ -177,6 +177,8 @@ return [
             'buktitransfer_helper'   => ' ',
             'namabank'               => 'Nama Bank',
             'namabank_helper'        => ' ',
+            'verified'               => 'Verified',
+            'verified_helper'        => ' ',
         ],
     ],
     'bank' => [
