@@ -278,6 +278,26 @@ class PermissionsTableSeeder extends Seeder
                 'id'    => 67,
                 'title' => 'profile_password_edit',
             ],
+            [
+                'id'    => 68,
+                'title' => 'account_dpd',
+            ],
+            [
+                'id'    => 69,
+                'title' => 'account_dpc',
+            ],
+            [
+                'id'    => 70,
+                'title' => 'account_upa',
+            ],
+            [
+                'id'    => 71,
+                'title' => 'account_anggota',
+            ],
+            [
+                'id'    => 72,
+                'title' => 'account_relawan',
+            ],
         ];
 
         Permission::insert($permissions);
