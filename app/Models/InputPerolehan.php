@@ -32,10 +32,8 @@ class InputPerolehan extends Model implements HasMedia
         'updated_at',
         'deleted_at',
     ];
-
-    protected $fillable = [];
 	
-	$fillable = [
+	protected $fillable = [
 		'namadonatur',
 		'nomorhp',
 		'zakatprofesi',
@@ -52,7 +50,7 @@ class InputPerolehan extends Model implements HasMedia
 		'team_id',
 	];		
 
-	$fillable_admin = [
+	protected $fillable_admin = [
 		'namadonatur',
 		'nomorhp',
 		'zakatprofesi',
