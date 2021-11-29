@@ -33,24 +33,46 @@ class InputPerolehan extends Model implements HasMedia
         'deleted_at',
     ];
 
-    protected $fillable = [
-        'namadonatur',
-        'nomorhp',
-        'zakatprofesi',
-        'zakatmaal',
-        'infaq',
-        'sedekah',
-        'wakafpendidikan',
-        'wakafproduktif',
-        'created_at',
-        'infaqkesehatan',
-        'namabank_id',
-        'verified',
-        'updated_at',
-        'deleted_at',
-        'team_id',
-    ];
-
+    protected $fillable = [];
+	
+	if($role->permissions == "permission_anggota" || $role->permissions == "permission_relawan") {
+		$fillable = [
+			'namadonatur',
+			'nomorhp',
+			'zakatprofesi',
+			'zakatmaal',
+			'infaq',
+			'sedekah',
+			'wakafpendidikan',
+			'wakafproduktif',
+			'created_at',
+			'infaqkesehatan',
+			'namabank_id',
+			'updated_at',
+			'deleted_at',
+			'team_id',
+		];		
+	}
+	else {
+		$fillable = [
+			'namadonatur',
+			'nomorhp',
+			'zakatprofesi',
+			'zakatmaal',
+			'infaq',
+			'sedekah',
+			'wakafpendidikan',
+			'wakafproduktif',
+			'created_at',
+			'infaqkesehatan',
+			'namabank_id',
+			'verified',
+			'updated_at',
+			'deleted_at',
+			'team_id',
+		];
+	}
+	
     public function registerMediaConversions(Media $media = null): void
     {
         $this->addMediaConversion('thumb')->fit('crop', 50, 50);
