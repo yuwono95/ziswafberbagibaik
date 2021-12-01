@@ -26,7 +26,7 @@ class UsersController extends Controller
         if ($request->ajax()) {
              $query = User::with(['roles', 'team'])->select(sprintf('%s.*', (new User())->table)); 
 			if(auth()->user()->id != '1') {
-				$query = $query->where('id', '<>', 1)
+				$query = $query->where('id', '<>', 1);
 			}
             $table = Datatables::of($query);
 
