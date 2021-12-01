@@ -22,13 +22,18 @@ class UsersController extends Controller
     public function index(Request $request)
     {
         abort_if(Gate::denies('user_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
+        
+        $isAdminDPD = auth()->user()->roles->contains(2);
+        $isAdminDPC = auth()->user()->roles->contains(3);
+        $userid = auth()->user()->id;
         if ($request->ajax()) {
-			$exclude = '';
-			if(auth()->user()->id != '1') {
-				$exclude = ' where id != 1';
-			}
             $query = User::with(['roles', 'team'])->select(sprintf('%s.*', (new User())->table));
+            if($isAdminDPD) {
+                $query = $query->where('id', '<>', 1);
+            }
+			elseif($isAdminDPC) {
+				$query = $query->where('id', '>', 2);
+			}
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -46,7 +51,7 @@ class UsersController extends Controller
                 'deleteGate',
                 'crudRoutePart',
                 'row'
-				));
+            ));
             });
 
             $table->editColumn('id', function ($row) {
@@ -65,16 +70,21 @@ class UsersController extends Controller
             $table->editColumn('verified', function ($row) {
                 return '<input type="checkbox" disabled ' . ($row->verified ? 'checked' : null) . '>';
             });
+            $table->editColumn('team_admin', function ($row) {
+                return '<input type="checkbox" disabled ' . ($row->team_admin ? 'checked' : null) . '>';
+            });
             $table->editColumn('roles', function ($row) {
                 $labels = [];
                 foreach ($row->roles as $role) {
-                    $labels[] = sprintf('<span class="label label-info label-many">%s</span>', $role->title);
+                    if($role->id != '1' ) {
+                        $labels[] = sprintf('<span class="label label-info label-many">%s</span>', $role->title);
+                    }
                 }
 
                 return implode(' ', $labels);
             });
 
-            $table->rawColumns(['actions', 'placeholder', 'approved', 'verified', 'roles']);
+            $table->rawColumns(['actions', 'placeholder', 'approved', 'verified', 'team_admin', 'roles']);
 
             return $table->make(true);
         }
@@ -90,6 +100,10 @@ class UsersController extends Controller
         abort_if(Gate::denies('user_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $roles = Role::pluck('title', 'id');
+        $index = array_search(['System Admin','1'], $roles->toArray());
+        if($index !== false){
+          unset($roles[$index]);
+        }
 
         $teams = Team::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -109,7 +123,11 @@ class UsersController extends Controller
         abort_if(Gate::denies('user_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $roles = Role::pluck('title', 'id');
-
+        $index = array_search(['System Admin','1'], $roles->toArray());
+        if($index !== false){
+          unset($roles[$index]);
+        }
+        
         $teams = Team::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $user->load('roles', 'team');
@@ -138,14 +156,21 @@ class UsersController extends Controller
     {
         abort_if(Gate::denies('user_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $user->delete();
+        if($user->id != '1') {
+            $user->delete();
+        }
 
         return back();
     }
 
     public function massDestroy(MassDestroyUserRequest $request)
     {
-        User::whereIn('id', request('ids'))->delete();
+        $ids = request('ids');
+        $index = array_search('1', $ids);
+        if($index !== false){
+          unset($ids[$index]);
+        }
+        User::whereIn('id', $ids)->delete();
 
         return response(null, Response::HTTP_NO_CONTENT);
     }
