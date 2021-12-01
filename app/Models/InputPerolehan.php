@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use \DateTimeInterface;
+use App\Traits\MultiTenantModelTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia;
@@ -11,6 +12,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class InputPerolehan extends Model implements HasMedia
 {
+    use MultiTenantModelTrait;
     use InteractsWithMedia;
     use HasFactory;
 
@@ -46,6 +48,7 @@ class InputPerolehan extends Model implements HasMedia
         'created_at',
         'updated_at',
         'deleted_at',
+        'team_id',
     ];
 
     public function registerMediaConversions(Media $media = null): void
@@ -74,6 +77,11 @@ class InputPerolehan extends Model implements HasMedia
     public function verifiedstatus()
     {
         return $this->belongsTo(VerifiedStatus::class, 'verifiedstatus_id');
+    }
+
+    public function team()
+    {
+        return $this->belongsTo(Team::class, 'team_id');
     }
 
     protected function serializeDate(DateTimeInterface $date)
