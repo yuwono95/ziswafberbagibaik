@@ -30,6 +30,20 @@
                         @endif
                     </div>
                     <div class="form-group">
+                        <label for="team_id">{{ trans('cruds.user.fields.team') }}</label>
+                        <select class="form-control select2 {{ $errors->has('team') ? 'is-invalid' : '' }}" name="team_id" id="team_id">
+                            @foreach($teams as $id => $entry)
+                                <option value="{{ $id }}" {{ (old('team_id') ? old('team_id') : $user->team->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                            @endforeach
+                        </select>
+                        @if($errors->has('team'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('team') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.user.fields.team_helper') }}</span>
+                    </div>
+                    <div class="form-group">
                         <button class="btn btn-danger" type="submit">
                             {{ trans('global.save') }}
                         </button>
@@ -69,26 +83,5 @@
             </div>
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-header">
-                {{ trans('global.delete_account') }}
-            </div>
-
-            <div class="card-body">
-                <form method="POST" action="{{ route("profile.password.destroyProfile") }}" onsubmit="return prompt('{{ __('global.delete_account_warning') }}') == '{{ auth()->user()->email }}'">
-                    @csrf
-                    <div class="form-group">
-                        <button class="btn btn-danger" type="submit">
-                            {{ trans('global.delete') }}
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
 </div>
 @endsection
