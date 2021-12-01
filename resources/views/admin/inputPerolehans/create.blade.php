@@ -114,7 +114,7 @@
                 <span class="help-block">{{ trans('cruds.inputPerolehan.fields.namabank_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="buktitransfer">{{ trans('cruds.inputPerolehan.fields.buktitransfer') }}</label>
+                <label class="required" for="buktitransfer">{{ trans('cruds.inputPerolehan.fields.buktitransfer') }}</label>
                 <div class="needsclick dropzone {{ $errors->has('buktitransfer') ? 'is-invalid' : '' }}" id="buktitransfer-dropzone">
                 </div>
                 @if($errors->has('buktitransfer'))

@@ -45,7 +45,7 @@
                 <span class="help-block">{{ trans('cruds.inputPerolehan.fields.namabank_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="buktitransfer">{{ trans('cruds.inputPerolehan.fields.buktitransfer') }}</label>
+                <label class="required" for="buktitransfer">{{ trans('cruds.inputPerolehan.fields.buktitransfer') }}</label>
                 <div class="needsclick dropzone {{ $errors->has('buktitransfer') ? 'is-invalid' : '' }}" id="buktitransfer-dropzone">
                 </div>
                 @if($errors->has('buktitransfer'))
@@ -54,6 +54,20 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.inputPerolehan.fields.buktitransfer_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="verifiedstatus_id">{{ trans('cruds.inputPerolehan.fields.verifiedstatus') }}</label>
+                <select class="form-control select2 {{ $errors->has('verifiedstatus') ? 'is-invalid' : '' }}" name="verifiedstatus_id" id="verifiedstatus_id">
+                    @foreach($verifiedstatuses as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('verifiedstatus_id') ? old('verifiedstatus_id') : $inputPerolehan->verifiedstatus->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('verifiedstatus'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('verifiedstatus') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.inputPerolehan.fields.verifiedstatus_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">
