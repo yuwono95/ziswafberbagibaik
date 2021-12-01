@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-@include('teams', ['model' => 'Team'])
+
 <div class="row">
     <div class="col-md-6">
         <div class="card">
@@ -33,7 +33,7 @@
                         <label for="team_id">{{ trans('cruds.user.fields.team') }}</label>
                         <select class="form-control select2 {{ $errors->has('team') ? 'is-invalid' : '' }}" name="team_id" id="team_id">
                             @foreach($teams as $id => $entry)
-                                <option value="{{ $id }}" {{ (old('team_id') ? old('team_id') : $user->team->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                                <option value="{{ $id }}" {{ (old('team_id') ? old('team_id') : $team->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                             @endforeach
                         </select>
                         @if($errors->has('team'))
