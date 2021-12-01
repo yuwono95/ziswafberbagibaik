@@ -191,22 +191,6 @@ return [
             'deleted_at_helper' => ' ',
         ],
     ],
-    'verifikasiPerolehan' => [
-        'title'          => 'Verifikasi Perolehan',
-        'title_singular' => 'Verifikasi Perolehan',
-        'fields'         => [
-            'id'                 => 'ID',
-            'id_helper'          => ' ',
-            'created_at'         => 'Created at',
-            'created_at_helper'  => ' ',
-            'updated_at'         => 'Updated at',
-            'updated_at_helper'  => ' ',
-            'deleted_at'         => 'Deleted at',
-            'deleted_at_helper'  => ' ',
-            'verificator'        => 'Verificator',
-            'verificator_helper' => ' ',
-        ],
-    ],
     'topTenAnggotum' => [
         'title'          => 'Top 10 Anggota',
         'title_singular' => 'Top 10 Anggotum',

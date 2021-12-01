@@ -184,16 +184,6 @@
                 </a>
             </li>
         @endcan
-        @can('verifikasi_perolehan_access')
-            <li class="c-sidebar-nav-item">
-                <a href="{{ route("admin.verifikasi-perolehans.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/verifikasi-perolehans") || request()->is("admin/verifikasi-perolehans/*") ? "c-active" : "" }}">
-                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
-
-                    </i>
-                    {{ trans('cruds.verifikasiPerolehan.title') }}
-                </a>
-            </li>
-        @endcan
         @php($unread = \App\Models\QaTopic::unreadCount())
             <li class="c-sidebar-nav-item">
                 <a href="{{ route("admin.messenger.index") }}" class="{{ request()->is("admin/messenger") || request()->is("admin/messenger/*") ? "c-active" : "" }} c-sidebar-nav-link">

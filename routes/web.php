@@ -75,10 +75,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('verified-statuses/destroy', 'VerifiedStatusController@massDestroy')->name('verified-statuses.massDestroy');
     Route::resource('verified-statuses', 'VerifiedStatusController');
 
-    // Verifikasi Perolehan
-    Route::delete('verifikasi-perolehans/destroy', 'VerifikasiPerolehanController@massDestroy')->name('verifikasi-perolehans.massDestroy');
-    Route::resource('verifikasi-perolehans', 'VerifikasiPerolehanController');
-
     // Top Ten Anggota
     Route::delete('top-ten-anggota/destroy', 'TopTenAnggotaController@massDestroy')->name('top-ten-anggota.massDestroy');
     Route::resource('top-ten-anggota', 'TopTenAnggotaController');
