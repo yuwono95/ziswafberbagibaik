@@ -22,6 +22,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Roles
     Route::delete('roles/destroy', 'RolesController@massDestroy')->name('roles.massDestroy');
+    Route::post('roles/parse-csv-import', 'RolesController@parseCsvImport')->name('roles.parseCsvImport');
+    Route::post('roles/process-csv-import', 'RolesController@processCsvImport')->name('roles.processCsvImport');
     Route::resource('roles', 'RolesController');
 
     // Users
@@ -77,6 +79,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Team
     Route::delete('teams/destroy', 'TeamController@massDestroy')->name('teams.massDestroy');
+    Route::post('teams/parse-csv-import', 'TeamController@parseCsvImport')->name('teams.parseCsvImport');
+    Route::post('teams/process-csv-import', 'TeamController@processCsvImport')->name('teams.processCsvImport');
     Route::resource('teams', 'TeamController');
 
     // Top Ten Anggota
