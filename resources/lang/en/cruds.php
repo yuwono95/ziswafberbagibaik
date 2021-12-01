@@ -155,6 +155,8 @@ return [
             'namabank_helper'        => ' ',
             'verifiedstatus'         => 'Verified Status',
             'verifiedstatus_helper'  => ' ',
+            'team'                   => 'Team',
+            'team_helper'            => ' ',
         ],
     ],
     'bank' => [
