@@ -29,6 +29,9 @@
                             {{ trans('cruds.verifikasiPerolehan.fields.verificator') }}
                         </th>
                         <th>
+                            {{ trans('cruds.inputPerolehan.fields.zakatprofesi') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.inputPerolehan.fields.zakatmaal') }}
                         </th>
                         <th>
@@ -45,9 +48,6 @@
                         </th>
                         <th>
                             {{ trans('cruds.inputPerolehan.fields.infaqkesehatan') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.inputPerolehan.fields.namadonatur') }}
                         </th>
                         <th>
                             {{ trans('cruds.inputPerolehan.fields.nomorhp') }}
@@ -103,6 +103,9 @@
                                 {{ $verifikasiPerolehan->verificator->namadonatur ?? '' }}
                             </td>
                             <td>
+                                {{ $verifikasiPerolehan->verificator->zakatprofesi ?? '' }}
+                            </td>
+                            <td>
                                 {{ $verifikasiPerolehan->verificator->zakatmaal ?? '' }}
                             </td>
                             <td>
@@ -119,9 +122,6 @@
                             </td>
                             <td>
                                 {{ $verifikasiPerolehan->verificator->infaqkesehatan ?? '' }}
-                            </td>
-                            <td>
-                                {{ $verifikasiPerolehan->verificator->namadonatur ?? '' }}
                             </td>
                             <td>
                                 {{ $verifikasiPerolehan->verificator->nomorhp ?? '' }}
