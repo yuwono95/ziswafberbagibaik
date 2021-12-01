@@ -10,6 +10,7 @@ class AddRelationshipFieldsToVerifikasiPerolehansTable extends Migration
     {
         Schema::table('verifikasi_perolehans', function (Blueprint $table) {
             $table->unsignedBigInteger('verificator_id');
+            $table->foreign('verificator_id', 'verificator_fk_5458536')->references('id')->on('input_perolehans');
         });
     }
 }
