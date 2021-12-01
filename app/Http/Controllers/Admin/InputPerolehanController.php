@@ -140,9 +140,11 @@ class InputPerolehanController extends Controller
 
         $namabanks = Bank::pluck('namabank', 'id')->prepend(trans('global.pleaseSelect'), '');
 
+        $verifiedstatuses = VerifiedStatus::pluck('status', 'id')->prepend(trans('global.pleaseSelect'), '');
+
         $inputPerolehan->load('namabank', 'verifiedstatus', 'team');
 
-        return view('admin.inputPerolehans.edit', compact('namabanks', 'inputPerolehan'));
+        return view('admin.inputPerolehans.edit', compact('namabanks', 'verifiedstatuses', 'inputPerolehan'));
     }
 
     public function update(UpdateInputPerolehanRequest $request, InputPerolehan $inputPerolehan)

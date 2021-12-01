@@ -29,6 +29,9 @@ class StoreInputPerolehanRequest extends FormRequest
                 'required',
                 'integer',
             ],
+            'buktitransfer' => [
+                'required',
+            ],
         ];
     }
 }
