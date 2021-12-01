@@ -53,6 +53,18 @@
                 <span class="help-block">{{ trans('cruds.user.fields.approved_helper') }}</span>
             </div>
             <div class="form-group">
+                <div class="form-check {{ $errors->has('team_admin') ? 'is-invalid' : '' }}">
+                    <input class="form-check-input" type="checkbox" name="team_admin" id="team_admin" value="1" required {{ old('team_admin', 0) == 1 ? 'checked' : '' }}>
+                    <label class="required form-check-label" for="team_admin">{{ trans('cruds.user.fields.team_admin') }}</label>
+                </div>
+                @if($errors->has('team_admin'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('team_admin') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.user.fields.team_admin_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label class="required" for="roles">{{ trans('cruds.user.fields.roles') }}</label>
                 <div style="padding-bottom: 4px">
                     <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>

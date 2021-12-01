@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->datetime('verified_at')->nullable();
             $table->string('verification_token')->nullable();
             $table->string('remember_token')->nullable();
+            $table->boolean('team_admin')->default(0)->nullable();
             $table->timestamps();
         });
     }
