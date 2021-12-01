@@ -79,10 +79,6 @@ return [
         'title'          => 'Report',
         'title_singular' => 'Report',
     ],
-    'topTenAnggotum' => [
-        'title'          => 'Top 10 Anggota',
-        'title_singular' => 'Top 10 Anggotum',
-    ],
     'perolehanUpa' => [
         'title'          => 'Perolehan UPA',
         'title_singular' => 'Perolehan UPA',
@@ -224,5 +220,9 @@ return [
             'owner'             => 'Owner',
             'owner_helper'      => ' ',
         ],
+    ],
+    'topTenAnggotum' => [
+        'title'          => 'Top 10 Anggota',
+        'title_singular' => 'Top 10 Anggotum',
     ],
 ];
