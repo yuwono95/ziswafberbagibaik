@@ -62,7 +62,7 @@
                         {{ trans('cruds.inputPerolehan.fields.buktitransfer') }}
                     </th>
                     <th>
-                        {{ trans('cruds.inputPerolehan.fields.verified') }}
+                        {{ trans('cruds.inputPerolehan.fields.verifiedstatus') }}
                     </th>
                     <th>
                         &nbsp;
@@ -112,6 +112,12 @@
                     <td>
                     </td>
                     <td>
+                        <select class="search">
+                            <option value>{{ trans('global.all') }}</option>
+                            @foreach($verified_statuses as $key => $item)
+                                <option value="{{ $item->status }}">{{ $item->status }}</option>
+                            @endforeach
+                        </select>
                     </td>
                     <td>
                     </td>
@@ -180,7 +186,7 @@
 { data: 'infaqkesehatan', name: 'infaqkesehatan' },
 { data: 'namabank_namabank', name: 'namabank.namabank' },
 { data: 'buktitransfer', name: 'buktitransfer', sortable: false, searchable: false },
-{ data: 'verified', name: 'verified' },
+{ data: 'verifiedstatus_status', name: 'verifiedstatus.status' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

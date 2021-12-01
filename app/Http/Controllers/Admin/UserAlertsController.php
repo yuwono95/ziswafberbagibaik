@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyUserAlertRequest;
 use App\Http\Requests\StoreUserAlertRequest;
-use App\Models\Team;
 use App\Models\User;
 use App\Models\UserAlert;
 use Gate;
@@ -20,7 +19,7 @@ class UserAlertsController extends Controller
         abort_if(Gate::denies('user_alert_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = UserAlert::with(['users', 'team'])->select(sprintf('%s.*', (new UserAlert())->table));
+            $query = UserAlert::with(['users'])->select(sprintf('%s.*', (new UserAlert())->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -65,9 +64,8 @@ class UserAlertsController extends Controller
         }
 
         $users = User::get();
-        $teams = Team::get();
 
-        return view('admin.userAlerts.index', compact('users', 'teams'));
+        return view('admin.userAlerts.index', compact('users'));
     }
 
     public function create()
@@ -91,7 +89,7 @@ class UserAlertsController extends Controller
     {
         abort_if(Gate::denies('user_alert_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $userAlert->load('users', 'team');
+        $userAlert->load('users');
 
         return view('admin.userAlerts.show', compact('userAlert'));
     }

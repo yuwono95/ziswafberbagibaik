@@ -31,76 +31,6 @@
                 <span class="help-block">{{ trans('cruds.inputPerolehan.fields.nomorhp_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="zakatprofesi">{{ trans('cruds.inputPerolehan.fields.zakatprofesi') }}</label>
-                <input class="form-control {{ $errors->has('zakatprofesi') ? 'is-invalid' : '' }}" type="number" name="zakatprofesi" id="zakatprofesi" value="{{ old('zakatprofesi', $inputPerolehan->zakatprofesi) }}" step="0.01">
-                @if($errors->has('zakatprofesi'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('zakatprofesi') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.inputPerolehan.fields.zakatprofesi_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="zakatmaal">{{ trans('cruds.inputPerolehan.fields.zakatmaal') }}</label>
-                <input class="form-control {{ $errors->has('zakatmaal') ? 'is-invalid' : '' }}" type="number" name="zakatmaal" id="zakatmaal" value="{{ old('zakatmaal', $inputPerolehan->zakatmaal) }}" step="0.01">
-                @if($errors->has('zakatmaal'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('zakatmaal') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.inputPerolehan.fields.zakatmaal_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="infaq">{{ trans('cruds.inputPerolehan.fields.infaq') }}</label>
-                <input class="form-control {{ $errors->has('infaq') ? 'is-invalid' : '' }}" type="number" name="infaq" id="infaq" value="{{ old('infaq', $inputPerolehan->infaq) }}" step="0.01">
-                @if($errors->has('infaq'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('infaq') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.inputPerolehan.fields.infaq_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="sedekah">{{ trans('cruds.inputPerolehan.fields.sedekah') }}</label>
-                <input class="form-control {{ $errors->has('sedekah') ? 'is-invalid' : '' }}" type="number" name="sedekah" id="sedekah" value="{{ old('sedekah', $inputPerolehan->sedekah) }}" step="0.01">
-                @if($errors->has('sedekah'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('sedekah') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.inputPerolehan.fields.sedekah_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="wakafpendidikan">{{ trans('cruds.inputPerolehan.fields.wakafpendidikan') }}</label>
-                <input class="form-control {{ $errors->has('wakafpendidikan') ? 'is-invalid' : '' }}" type="number" name="wakafpendidikan" id="wakafpendidikan" value="{{ old('wakafpendidikan', $inputPerolehan->wakafpendidikan) }}" step="0.01">
-                @if($errors->has('wakafpendidikan'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('wakafpendidikan') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.inputPerolehan.fields.wakafpendidikan_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="wakafproduktif">{{ trans('cruds.inputPerolehan.fields.wakafproduktif') }}</label>
-                <input class="form-control {{ $errors->has('wakafproduktif') ? 'is-invalid' : '' }}" type="number" name="wakafproduktif" id="wakafproduktif" value="{{ old('wakafproduktif', $inputPerolehan->wakafproduktif) }}" step="0.01">
-                @if($errors->has('wakafproduktif'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('wakafproduktif') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.inputPerolehan.fields.wakafproduktif_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="infaqkesehatan">{{ trans('cruds.inputPerolehan.fields.infaqkesehatan') }}</label>
-                <input class="form-control {{ $errors->has('infaqkesehatan') ? 'is-invalid' : '' }}" type="number" name="infaqkesehatan" id="infaqkesehatan" value="{{ old('infaqkesehatan', $inputPerolehan->infaqkesehatan) }}" step="0.01">
-                @if($errors->has('infaqkesehatan'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('infaqkesehatan') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.inputPerolehan.fields.infaqkesehatan_helper') }}</span>
-            </div>
-            <div class="form-group">
                 <label class="required" for="namabank_id">{{ trans('cruds.inputPerolehan.fields.namabank') }}</label>
                 <select class="form-control select2 {{ $errors->has('namabank') ? 'is-invalid' : '' }}" name="namabank_id" id="namabank_id" required>
                     @foreach($namabanks as $id => $entry)
@@ -124,19 +54,6 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.inputPerolehan.fields.buktitransfer_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <div class="form-check {{ $errors->has('verified') ? 'is-invalid' : '' }}">
-                    <input type="hidden" name="verified" value="0">
-                    <input class="form-check-input" type="checkbox" name="verified" id="verified" value="1" {{ $inputPerolehan->verified || old('verified', 0) === 1 ? 'checked' : '' }}>
-                    <label class="form-check-label" for="verified">{{ trans('cruds.inputPerolehan.fields.verified') }}</label>
-                </div>
-                @if($errors->has('verified'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('verified') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.inputPerolehan.fields.verified_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">

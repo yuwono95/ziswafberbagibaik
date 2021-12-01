@@ -54,12 +54,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('perolehan-semua-dpcs/destroy', 'PerolehanSemuaDpcController@massDestroy')->name('perolehan-semua-dpcs.massDestroy');
     Route::resource('perolehan-semua-dpcs', 'PerolehanSemuaDpcController');
 
-    // Team
-    Route::delete('teams/destroy', 'TeamController@massDestroy')->name('teams.massDestroy');
-    Route::post('teams/parse-csv-import', 'TeamController@parseCsvImport')->name('teams.parseCsvImport');
-    Route::post('teams/process-csv-import', 'TeamController@processCsvImport')->name('teams.processCsvImport');
-    Route::resource('teams', 'TeamController');
-
     // User Alerts
     Route::delete('user-alerts/destroy', 'UserAlertsController@massDestroy')->name('user-alerts.massDestroy');
     Route::get('user-alerts/read', 'UserAlertsController@read');
@@ -77,7 +71,28 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('banks/destroy', 'BankController@massDestroy')->name('banks.massDestroy');
     Route::resource('banks', 'BankController');
 
+    // Verified Status
+    Route::delete('verified-statuses/destroy', 'VerifiedStatusController@massDestroy')->name('verified-statuses.massDestroy');
+    Route::resource('verified-statuses', 'VerifiedStatusController');
+
+    // Verifikasi Perolehan
+    Route::delete('verifikasi-perolehans/destroy', 'VerifikasiPerolehanController@massDestroy')->name('verifikasi-perolehans.massDestroy');
+    Route::resource('verifikasi-perolehans', 'VerifikasiPerolehanController');
+
+    // Team
+    Route::delete('teams/destroy', 'TeamController@massDestroy')->name('teams.massDestroy');
+    Route::resource('teams', 'TeamController');
+
     Route::get('global-search', 'GlobalSearchController@search')->name('globalSearch');
+    Route::get('messenger', 'MessengerController@index')->name('messenger.index');
+    Route::get('messenger/create', 'MessengerController@createTopic')->name('messenger.createTopic');
+    Route::post('messenger', 'MessengerController@storeTopic')->name('messenger.storeTopic');
+    Route::get('messenger/inbox', 'MessengerController@showInbox')->name('messenger.showInbox');
+    Route::get('messenger/outbox', 'MessengerController@showOutbox')->name('messenger.showOutbox');
+    Route::get('messenger/{topic}', 'MessengerController@showMessages')->name('messenger.showMessages');
+    Route::delete('messenger/{topic}', 'MessengerController@destroyTopic')->name('messenger.destroyTopic');
+    Route::post('messenger/{topic}/reply', 'MessengerController@replyToTopic')->name('messenger.reply');
+    Route::get('messenger/{topic}/reply', 'MessengerController@showReply')->name('messenger.showReply');
     Route::get('team-members', 'TeamMembersController@index')->name('team-members.index');
     Route::post('team-members', 'TeamMembersController@invite')->name('team-members.invite');
 });

@@ -174,34 +174,67 @@
                 </a>
             </li>
         @endcan
-        @if(\Illuminate\Support\Facades\Schema::hasColumn('teams', 'owner_id') && \App\Models\Team::where('owner_id', auth()->user()->id)->exists())
+        @can('verified_status_access')
             <li class="c-sidebar-nav-item">
-                <a class="{{ request()->is("admin/team-members") || request()->is("admin/team-members/*") ? "c-active" : "" }} c-sidebar-nav-link" href="{{ route("admin.team-members.index") }}">
-                    <i class="c-sidebar-nav-icon fa-fw fa fa-users">
+                <a href="{{ route("admin.verified-statuses.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/verified-statuses") || request()->is("admin/verified-statuses/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
                     </i>
-                    <span>{{ trans("global.team-members") }}</span>
+                    {{ trans('cruds.verifiedStatus.title') }}
                 </a>
             </li>
-        @endif
-        @if(file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))
-            @can('profile_password_edit')
+        @endcan
+        @can('verifikasi_perolehan_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.verifikasi-perolehans.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/verifikasi-perolehans") || request()->is("admin/verifikasi-perolehans/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.verifikasiPerolehan.title') }}
+                </a>
+            </li>
+        @endcan
+        @php($unread = \App\Models\QaTopic::unreadCount())
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.messenger.index") }}" class="{{ request()->is("admin/messenger") || request()->is("admin/messenger/*") ? "c-active" : "" }} c-sidebar-nav-link">
+                    <i class="c-sidebar-nav-icon fa-fw fa fa-envelope">
+
+                    </i>
+                    <span>{{ trans('global.messages') }}</span>
+                    @if($unread > 0)
+                        <strong>( {{ $unread }} )</strong>
+                    @endif
+
+                </a>
+            </li>
+            @if(\Illuminate\Support\Facades\Schema::hasColumn('teams', 'owner_id') && \App\Models\Team::where('owner_id', auth()->user()->id)->exists())
                 <li class="c-sidebar-nav-item">
-                    <a class="c-sidebar-nav-link {{ request()->is('profile/password') || request()->is('profile/password/*') ? 'c-active' : '' }}" href="{{ route('profile.password.edit') }}">
-                        <i class="fa-fw fas fa-key c-sidebar-nav-icon">
+                    <a class="{{ request()->is("admin/team-members") || request()->is("admin/team-members/*") ? "c-active" : "" }} c-sidebar-nav-link" href="{{ route("admin.team-members.index") }}">
+                        <i class="c-sidebar-nav-icon fa-fw fa fa-users">
                         </i>
-                        {{ trans('global.change_password') }}
+                        <span>{{ trans("global.team-members") }}</span>
                     </a>
                 </li>
-            @endcan
-        @endif
-        <li class="c-sidebar-nav-item">
-            <a href="#" class="c-sidebar-nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
-                <i class="c-sidebar-nav-icon fas fa-fw fa-sign-out-alt">
+            @endif
+            @if(file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))
+                @can('profile_password_edit')
+                    <li class="c-sidebar-nav-item">
+                        <a class="c-sidebar-nav-link {{ request()->is('profile/password') || request()->is('profile/password/*') ? 'c-active' : '' }}" href="{{ route('profile.password.edit') }}">
+                            <i class="fa-fw fas fa-key c-sidebar-nav-icon">
+                            </i>
+                            {{ trans('global.change_password') }}
+                        </a>
+                    </li>
+                @endcan
+            @endif
+            <li class="c-sidebar-nav-item">
+                <a href="#" class="c-sidebar-nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
+                    <i class="c-sidebar-nav-icon fas fa-fw fa-sign-out-alt">
 
-                </i>
-                {{ trans('global.logout') }}
-            </a>
-        </li>
+                    </i>
+                    {{ trans('global.logout') }}
+                </a>
+            </li>
     </ul>
 
 </div>

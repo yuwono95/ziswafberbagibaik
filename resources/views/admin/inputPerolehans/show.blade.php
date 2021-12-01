@@ -117,10 +117,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.inputPerolehan.fields.verified') }}
+                            {{ trans('cruds.inputPerolehan.fields.verifiedstatus') }}
                         </th>
                         <td>
-                            <input type="checkbox" disabled="disabled" {{ $inputPerolehan->verified ? 'checked' : '' }}>
+                            {{ $inputPerolehan->verifiedstatus->status ?? '' }}
                         </td>
                     </tr>
                 </tbody>

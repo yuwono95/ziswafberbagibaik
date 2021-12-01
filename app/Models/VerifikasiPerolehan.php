@@ -6,27 +6,28 @@ use \DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class UserAlert extends Model
+class VerifikasiPerolehan extends Model
 {
     use HasFactory;
 
-    public $table = 'user_alerts';
+    public $table = 'verifikasi_perolehans';
 
     protected $dates = [
         'created_at',
         'updated_at',
+        'deleted_at',
     ];
 
     protected $fillable = [
-        'alert_text',
-        'alert_link',
+        'verificator_id',
         'created_at',
         'updated_at',
+        'deleted_at',
     ];
 
-    public function users()
+    public function verificator()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsTo(InputPerolehan::class, 'verificator_id');
     }
 
     protected function serializeDate(DateTimeInterface $date)
