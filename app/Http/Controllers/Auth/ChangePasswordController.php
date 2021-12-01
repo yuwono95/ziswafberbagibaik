@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdatePasswordRequest;
 use App\Http\Requests\UpdateProfileRequest;
-use App\Models\Team;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,9 +14,8 @@ class ChangePasswordController extends Controller
     public function edit()
     {
         abort_if(Gate::denies('profile_password_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        $teams = Team::pluck('name', 'id');
 
-        return view('auth.passwords.edit', compact('teams'));
+        return view('auth.passwords.edit');
     }
 
     public function update(UpdatePasswordRequest $request)
