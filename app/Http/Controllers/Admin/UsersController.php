@@ -23,11 +23,16 @@ class UsersController extends Controller
     {
         abort_if(Gate::denies('user_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         
+        $isAdminDPD = auth()->user()->roles->contains(2);
+        $isAdminDPC = auth()->user()->roles->contains(3);
         $userid = auth()->user()->id;
         if ($request->ajax()) {
-             $query = User::with(['roles', 'team'])->select(sprintf('%s.*', (new User())->table)); 
-			if($userid != '1' && $userid != '2') {
-				$query = $query->where('id', '>', $userid);
+            $query = User::with(['roles', 'team'])->select(sprintf('%s.*', (new User())->table));
+            if($isAdminDPD) {
+                $query = $query->where('id', '<>', 1);
+            }
+			elseif($isAdminDPC) {
+				$query = $query->where('id', '>', 2);
 			}
             $table = Datatables::of($query);
 
