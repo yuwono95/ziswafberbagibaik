@@ -24,6 +24,10 @@ class UsersController extends Controller
         abort_if(Gate::denies('user_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
+			$exclude = '';
+			if(auth()->user()->id != '1') {
+				$exclude = ' where id != 1';
+			}
             $query = User::with(['roles', 'team'])->select(sprintf('%s.*', (new User())->table));
             $table = Datatables::of($query);
 
@@ -42,7 +46,7 @@ class UsersController extends Controller
                 'deleteGate',
                 'crudRoutePart',
                 'row'
-            ));
+				));
             });
 
             $table->editColumn('id', function ($row) {
@@ -61,9 +65,6 @@ class UsersController extends Controller
             $table->editColumn('verified', function ($row) {
                 return '<input type="checkbox" disabled ' . ($row->verified ? 'checked' : null) . '>';
             });
-            $table->editColumn('team_admin', function ($row) {
-                return '<input type="checkbox" disabled ' . ($row->team_admin ? 'checked' : null) . '>';
-            });
             $table->editColumn('roles', function ($row) {
                 $labels = [];
                 foreach ($row->roles as $role) {
@@ -73,7 +74,7 @@ class UsersController extends Controller
                 return implode(' ', $labels);
             });
 
-            $table->rawColumns(['actions', 'placeholder', 'approved', 'verified', 'team_admin', 'roles']);
+            $table->rawColumns(['actions', 'placeholder', 'approved', 'verified', 'roles']);
 
             return $table->make(true);
         }
