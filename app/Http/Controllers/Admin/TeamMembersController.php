@@ -16,9 +16,10 @@ class TeamMembersController extends Controller
     public function index()
     {
         $team  = Team::where('owner_id', auth()->user()->id)->first();
+		$teams = Team::pluck('name','id');
         $users = User::where('team_id', $team->id)->get();
 
-        return view('admin.team-members.index', compact('team', 'users'));
+        return view('admin.team-members.index', compact('team', 'teams', 'users'));
     }
 
     public function invite(Request $request)
