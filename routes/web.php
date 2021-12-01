@@ -30,10 +30,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('users/process-csv-import', 'UsersController@processCsvImport')->name('users.processCsvImport');
     Route::resource('users', 'UsersController');
 
-    // Top Ten Anggota
-    Route::delete('top-ten-anggota/destroy', 'TopTenAnggotaController@massDestroy')->name('top-ten-anggota.massDestroy');
-    Route::resource('top-ten-anggota', 'TopTenAnggotaController');
-
     // Perolehan Upa
     Route::delete('perolehan-upas/destroy', 'PerolehanUpaController@massDestroy')->name('perolehan-upas.massDestroy');
     Route::resource('perolehan-upas', 'PerolehanUpaController');
@@ -82,6 +78,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Team
     Route::delete('teams/destroy', 'TeamController@massDestroy')->name('teams.massDestroy');
     Route::resource('teams', 'TeamController');
+
+    // Top Ten Anggota
+    Route::delete('top-ten-anggota/destroy', 'TopTenAnggotaController@massDestroy')->name('top-ten-anggota.massDestroy');
+    Route::resource('top-ten-anggota', 'TopTenAnggotaController');
 
     Route::get('global-search', 'GlobalSearchController@search')->name('globalSearch');
     Route::get('messenger', 'MessengerController@index')->name('messenger.index');
