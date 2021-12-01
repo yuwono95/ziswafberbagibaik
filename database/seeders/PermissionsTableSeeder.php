@@ -80,239 +80,239 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 18,
-                'title' => 'perolehan_upa_create',
+                'title' => 'top_ten_anggota_create',
             ],
             [
                 'id'    => 19,
-                'title' => 'perolehan_upa_edit',
+                'title' => 'top_ten_anggota_edit',
             ],
             [
                 'id'    => 20,
-                'title' => 'perolehan_upa_show',
+                'title' => 'top_ten_anggota_show',
             ],
             [
                 'id'    => 21,
-                'title' => 'perolehan_upa_delete',
+                'title' => 'top_ten_anggota_delete',
             ],
             [
                 'id'    => 22,
-                'title' => 'perolehan_upa_access',
+                'title' => 'top_ten_anggota_access',
             ],
             [
                 'id'    => 23,
-                'title' => 'perolehan_sendiri_create',
+                'title' => 'perolehan_upa_create',
             ],
             [
                 'id'    => 24,
-                'title' => 'perolehan_sendiri_edit',
+                'title' => 'perolehan_upa_edit',
             ],
             [
                 'id'    => 25,
-                'title' => 'perolehan_sendiri_show',
+                'title' => 'perolehan_upa_show',
             ],
             [
                 'id'    => 26,
-                'title' => 'perolehan_sendiri_delete',
+                'title' => 'perolehan_upa_delete',
             ],
             [
                 'id'    => 27,
-                'title' => 'perolehan_sendiri_access',
+                'title' => 'perolehan_upa_access',
             ],
             [
                 'id'    => 28,
-                'title' => 'perolehan_dpc_create',
+                'title' => 'perolehan_sendiri_create',
             ],
             [
                 'id'    => 29,
-                'title' => 'perolehan_dpc_edit',
+                'title' => 'perolehan_sendiri_edit',
             ],
             [
                 'id'    => 30,
-                'title' => 'perolehan_dpc_show',
+                'title' => 'perolehan_sendiri_show',
             ],
             [
                 'id'    => 31,
-                'title' => 'perolehan_dpc_delete',
+                'title' => 'perolehan_sendiri_delete',
             ],
             [
                 'id'    => 32,
-                'title' => 'perolehan_dpc_access',
+                'title' => 'perolehan_sendiri_access',
             ],
             [
                 'id'    => 33,
-                'title' => 'top_ten_upa_create',
+                'title' => 'perolehan_dpc_create',
             ],
             [
                 'id'    => 34,
-                'title' => 'top_ten_upa_edit',
+                'title' => 'perolehan_dpc_edit',
             ],
             [
                 'id'    => 35,
-                'title' => 'top_ten_upa_show',
+                'title' => 'perolehan_dpc_show',
             ],
             [
                 'id'    => 36,
-                'title' => 'top_ten_upa_delete',
+                'title' => 'perolehan_dpc_delete',
             ],
             [
                 'id'    => 37,
-                'title' => 'top_ten_upa_access',
+                'title' => 'perolehan_dpc_access',
             ],
             [
                 'id'    => 38,
-                'title' => 'perolehan_semua_dpc_create',
+                'title' => 'top_ten_upa_create',
             ],
             [
                 'id'    => 39,
-                'title' => 'perolehan_semua_dpc_edit',
+                'title' => 'top_ten_upa_edit',
             ],
             [
                 'id'    => 40,
-                'title' => 'perolehan_semua_dpc_show',
+                'title' => 'top_ten_upa_show',
             ],
             [
                 'id'    => 41,
-                'title' => 'perolehan_semua_dpc_delete',
+                'title' => 'top_ten_upa_delete',
             ],
             [
                 'id'    => 42,
-                'title' => 'perolehan_semua_dpc_access',
+                'title' => 'top_ten_upa_access',
             ],
             [
                 'id'    => 43,
-                'title' => 'user_alert_create',
+                'title' => 'perolehan_semua_dpc_create',
             ],
             [
                 'id'    => 44,
-                'title' => 'user_alert_show',
+                'title' => 'perolehan_semua_dpc_edit',
             ],
             [
                 'id'    => 45,
-                'title' => 'user_alert_delete',
+                'title' => 'perolehan_semua_dpc_show',
             ],
             [
                 'id'    => 46,
-                'title' => 'user_alert_access',
+                'title' => 'perolehan_semua_dpc_delete',
             ],
             [
                 'id'    => 47,
-                'title' => 'input_perolehan_create',
+                'title' => 'perolehan_semua_dpc_access',
             ],
             [
                 'id'    => 48,
-                'title' => 'input_perolehan_edit',
+                'title' => 'user_alert_create',
             ],
             [
                 'id'    => 49,
-                'title' => 'input_perolehan_show',
+                'title' => 'user_alert_show',
             ],
             [
                 'id'    => 50,
-                'title' => 'input_perolehan_delete',
+                'title' => 'user_alert_delete',
             ],
             [
                 'id'    => 51,
-                'title' => 'input_perolehan_access',
+                'title' => 'user_alert_access',
             ],
             [
                 'id'    => 52,
-                'title' => 'bank_create',
+                'title' => 'input_perolehan_create',
             ],
             [
                 'id'    => 53,
-                'title' => 'bank_edit',
+                'title' => 'input_perolehan_edit',
             ],
             [
                 'id'    => 54,
-                'title' => 'bank_show',
+                'title' => 'input_perolehan_show',
             ],
             [
                 'id'    => 55,
-                'title' => 'bank_delete',
+                'title' => 'input_perolehan_delete',
             ],
             [
                 'id'    => 56,
-                'title' => 'bank_access',
+                'title' => 'input_perolehan_access',
             ],
             [
                 'id'    => 57,
-                'title' => 'verified_status_create',
+                'title' => 'bank_create',
             ],
             [
                 'id'    => 58,
-                'title' => 'verified_status_edit',
+                'title' => 'bank_edit',
             ],
             [
                 'id'    => 59,
-                'title' => 'verified_status_show',
+                'title' => 'bank_show',
             ],
             [
                 'id'    => 60,
-                'title' => 'verified_status_delete',
+                'title' => 'bank_delete',
             ],
             [
                 'id'    => 61,
-                'title' => 'verified_status_access',
+                'title' => 'bank_access',
             ],
             [
                 'id'    => 62,
-                'title' => 'verifikasi_perolehan_create',
+                'title' => 'verified_status_create',
             ],
             [
                 'id'    => 63,
-                'title' => 'verifikasi_perolehan_edit',
+                'title' => 'verified_status_edit',
             ],
             [
                 'id'    => 64,
-                'title' => 'verifikasi_perolehan_show',
+                'title' => 'verified_status_show',
             ],
             [
                 'id'    => 65,
-                'title' => 'verifikasi_perolehan_delete',
+                'title' => 'verified_status_delete',
             ],
             [
                 'id'    => 66,
-                'title' => 'verifikasi_perolehan_access',
+                'title' => 'verified_status_access',
             ],
             [
                 'id'    => 67,
-                'title' => 'team_create',
+                'title' => 'verifikasi_perolehan_create',
             ],
             [
                 'id'    => 68,
-                'title' => 'team_edit',
+                'title' => 'verifikasi_perolehan_edit',
             ],
             [
                 'id'    => 69,
-                'title' => 'team_show',
+                'title' => 'verifikasi_perolehan_show',
             ],
             [
                 'id'    => 70,
-                'title' => 'team_delete',
+                'title' => 'verifikasi_perolehan_delete',
             ],
             [
                 'id'    => 71,
-                'title' => 'team_access',
+                'title' => 'verifikasi_perolehan_access',
             ],
             [
                 'id'    => 72,
-                'title' => 'top_ten_anggotum_create',
+                'title' => 'team_create',
             ],
             [
                 'id'    => 73,
-                'title' => 'top_ten_anggotum_edit',
+                'title' => 'team_edit',
             ],
             [
                 'id'    => 74,
-                'title' => 'top_ten_anggotum_show',
+                'title' => 'team_show',
             ],
             [
                 'id'    => 75,
-                'title' => 'top_ten_anggotum_delete',
+                'title' => 'team_delete',
             ],
             [
                 'id'    => 76,
-                'title' => 'top_ten_anggotum_access',
+                'title' => 'team_access',
             ],
             [
                 'id'    => 77,
