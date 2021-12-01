@@ -67,9 +67,7 @@ class UsersController extends Controller
             $table->editColumn('roles', function ($row) {
                 $labels = [];
                 foreach ($row->roles as $role) {
-                    if($role->id != '1') {
-                        $labels[] = sprintf('<span class="label label-info label-many">%s</span>', $role->title);
-                    }
+                    $labels[] = sprintf('<span class="label label-info label-many">%s</span>', $role->title);
                 }
 
                 return implode(' ', $labels);
@@ -91,10 +89,6 @@ class UsersController extends Controller
         abort_if(Gate::denies('user_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $roles = Role::pluck('title', 'id');
-        $index = array_search(['Super Admin','1'], $roles->toArray());
-        if($index !== false){
-          unset($roles[$index]);
-        }
 
         $teams = Team::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -114,11 +108,7 @@ class UsersController extends Controller
         abort_if(Gate::denies('user_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $roles = Role::pluck('title', 'id');
-        $index = array_search(['Super Admin','1'], $roles->toArray());
-        if($index !== false){
-          unset($roles[$index]);
-        }
-        
+
         $teams = Team::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $user->load('roles', 'team');
@@ -147,21 +137,14 @@ class UsersController extends Controller
     {
         abort_if(Gate::denies('user_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        if($user->id != '1') {
-            $user->delete();
-        }
+        $user->delete();
 
         return back();
     }
 
     public function massDestroy(MassDestroyUserRequest $request)
     {
-        $ids = request('ids');
-        $index = array_search('1', $ids);
-        if($index !== false){
-          unset($ids[$index]);
-        }
-        User::whereIn('id', $ids)->delete();
+        User::whereIn('id', request('ids'))->delete();
 
         return response(null, Response::HTTP_NO_CONTENT);
     }

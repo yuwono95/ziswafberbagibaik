@@ -54,8 +54,9 @@
             </div>
             <div class="form-group">
                 <div class="form-check {{ $errors->has('team_admin') ? 'is-invalid' : '' }}">
-                    <input class="form-check-input" type="checkbox" name="team_admin" id="team_admin" value="1" required {{ old('team_admin', 0) == 1 ? 'checked' : '' }}>
-                    <label class="required form-check-label" for="team_admin">{{ trans('cruds.user.fields.team_admin') }}</label>
+                    <input type="hidden" name="team_admin" value="0">
+                    <input class="form-check-input" type="checkbox" name="team_admin" id="team_admin" value="1" {{ old('team_admin', 0) == 1 ? 'checked' : '' }}>
+                    <label class="form-check-label" for="team_admin">{{ trans('cruds.user.fields.team_admin') }}</label>
                 </div>
                 @if($errors->has('team_admin'))
                     <div class="invalid-feedback">
