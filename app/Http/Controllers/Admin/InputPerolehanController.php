@@ -10,6 +10,7 @@ use App\Http\Requests\StoreInputPerolehanRequest;
 use App\Http\Requests\UpdateInputPerolehanRequest;
 use App\Models\Bank;
 use App\Models\InputPerolehan;
+use App\Models\Team;
 use App\Models\VerifiedStatus;
 use Gate;
 use Illuminate\Http\Request;
@@ -27,7 +28,7 @@ class InputPerolehanController extends Controller
         abort_if(Gate::denies('input_perolehan_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = InputPerolehan::with(['namabank', 'verifiedstatus'])->select(sprintf('%s.*', (new InputPerolehan())->table));
+            $query = InputPerolehan::with(['namabank', 'verifiedstatus', 'team'])->select(sprintf('%s.*', (new InputPerolehan())->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -104,8 +105,9 @@ class InputPerolehanController extends Controller
 
         $banks             = Bank::get();
         $verified_statuses = VerifiedStatus::get();
+        $teams             = Team::get();
 
-        return view('admin.inputPerolehans.index', compact('banks', 'verified_statuses'));
+        return view('admin.inputPerolehans.index', compact('banks', 'verified_statuses', 'teams'));
     }
 
     public function create()
@@ -138,7 +140,7 @@ class InputPerolehanController extends Controller
 
         $namabanks = Bank::pluck('namabank', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $inputPerolehan->load('namabank', 'verifiedstatus');
+        $inputPerolehan->load('namabank', 'verifiedstatus', 'team');
 
         return view('admin.inputPerolehans.edit', compact('namabanks', 'inputPerolehan'));
     }
@@ -165,7 +167,7 @@ class InputPerolehanController extends Controller
     {
         abort_if(Gate::denies('input_perolehan_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $inputPerolehan->load('namabank', 'verifiedstatus');
+        $inputPerolehan->load('namabank', 'verifiedstatus', 'team');
 
         return view('admin.inputPerolehans.show', compact('inputPerolehan'));
     }
