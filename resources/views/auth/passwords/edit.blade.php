@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-
+@include('teams', ['model' => 'Team'])
 <div class="row">
     <div class="col-md-6">
         <div class="card">
