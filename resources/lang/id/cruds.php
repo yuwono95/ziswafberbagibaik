@@ -73,6 +73,8 @@ return [
             'verification_token_helper' => ' ',
             'team'                      => 'Team',
             'team_helper'               => ' ',
+            'team_admin'                => 'Team Admin',
+            'team_admin_helper'         => ' ',
         ],
     ],
     'report' => [

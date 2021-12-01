@@ -65,6 +65,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.user.fields.team_admin') }}
+                        </th>
+                        <td>
+                            <input type="checkbox" disabled="disabled" {{ $user->team_admin ? 'checked' : '' }}>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.user.fields.roles') }}
                         </th>
                         <td>

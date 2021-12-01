@@ -61,6 +61,9 @@ class UsersController extends Controller
             $table->editColumn('verified', function ($row) {
                 return '<input type="checkbox" disabled ' . ($row->verified ? 'checked' : null) . '>';
             });
+            $table->editColumn('team_admin', function ($row) {
+                return '<input type="checkbox" disabled ' . ($row->team_admin ? 'checked' : null) . '>';
+            });
             $table->editColumn('roles', function ($row) {
                 $labels = [];
                 foreach ($row->roles as $role) {
@@ -70,7 +73,7 @@ class UsersController extends Controller
                 return implode(' ', $labels);
             });
 
-            $table->rawColumns(['actions', 'placeholder', 'approved', 'verified', 'roles']);
+            $table->rawColumns(['actions', 'placeholder', 'approved', 'verified', 'team_admin', 'roles']);
 
             return $table->make(true);
         }
