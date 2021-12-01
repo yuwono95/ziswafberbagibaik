@@ -72,8 +72,8 @@
                 <span class="help-block">{{ trans('cruds.user.fields.roles_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="team_id">{{ trans('cruds.user.fields.team') }}</label>
-                <select class="form-control select2 {{ $errors->has('team') ? 'is-invalid' : '' }}" name="team_id" id="team_id" required>
+                <label for="team_id">{{ trans('cruds.user.fields.team') }}</label>
+                <select class="form-control select2 {{ $errors->has('team') ? 'is-invalid' : '' }}" name="team_id" id="team_id">
                     @foreach($teams as $id => $entry)
                         <option value="{{ $id }}" {{ (old('team_id') ? old('team_id') : $user->team->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach

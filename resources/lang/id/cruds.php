@@ -203,6 +203,10 @@ return [
             'verificator_helper' => ' ',
         ],
     ],
+    'topTenAnggotum' => [
+        'title'          => 'Top 10 Anggota',
+        'title_singular' => 'Top 10 Anggotum',
+    ],
     'team' => [
         'title'          => 'Teams',
         'title_singular' => 'Team',
@@ -220,9 +224,5 @@ return [
             'owner'             => 'Owner',
             'owner_helper'      => ' ',
         ],
-    ],
-    'topTenAnggotum' => [
-        'title'          => 'Top 10 Anggota',
-        'title_singular' => 'Top 10 Anggotum',
     ],
 ];
