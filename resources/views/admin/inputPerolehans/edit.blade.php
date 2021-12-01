@@ -55,6 +55,7 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.inputPerolehan.fields.buktitransfer_helper') }}</span>
             </div>
+            @if(auth()->user()->team_admin)
             <div class="form-group">
                 <label for="verifiedstatus_id">{{ trans('cruds.inputPerolehan.fields.verifiedstatus') }}</label>
                 <select class="form-control select2 {{ $errors->has('verifiedstatus') ? 'is-invalid' : '' }}" name="verifiedstatus_id" id="verifiedstatus_id">
@@ -69,6 +70,7 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.inputPerolehan.fields.verifiedstatus_helper') }}</span>
             </div>
+            @endif
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
