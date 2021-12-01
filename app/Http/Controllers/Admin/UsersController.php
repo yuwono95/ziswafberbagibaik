@@ -24,7 +24,13 @@ class UsersController extends Controller
         abort_if(Gate::denies('user_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = User::with(['roles', 'team'])->select(sprintf('%s.*', (new User())->table));
+			$strSQL = '';
+			if(auth()->user()->id == '1') {
+                $strSQL = '%s.*';
+            } else {
+				$strSQL = '%s.* where id != 1';
+			}
+            $query = User::with(['roles', 'team'])->select(sprintf($strSQL, (new User())->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
