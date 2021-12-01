@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use \DateTimeInterface;
-use App\Traits\MultiTenantModelTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia;
@@ -12,7 +11,6 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class InputPerolehan extends Model implements HasMedia
 {
-    use MultiTenantModelTrait;
     use InteractsWithMedia;
     use HasFactory;
 
@@ -32,42 +30,24 @@ class InputPerolehan extends Model implements HasMedia
         'updated_at',
         'deleted_at',
     ];
-	
-	protected $fillable = [
-		'namadonatur',
-		'nomorhp',
-		'zakatprofesi',
-		'zakatmaal',
-		'infaq',
-		'sedekah',
-		'wakafpendidikan',
-		'wakafproduktif',
-		'created_at',
-		'infaqkesehatan',
-		'namabank_id',
-		'updated_at',
-		'deleted_at',
-		'team_id',
-	];		
 
-	protected $fillable_admin = [
-		'namadonatur',
-		'nomorhp',
-		'zakatprofesi',
-		'zakatmaal',
-		'infaq',
-		'sedekah',
-		'wakafpendidikan',
-		'wakafproduktif',
-		'created_at',
-		'infaqkesehatan',
-		'namabank_id',
-		'verified',
-		'updated_at',
-		'deleted_at',
-		'team_id',
-	];
-	
+    protected $fillable = [
+        'namadonatur',
+        'nomorhp',
+        'zakatprofesi',
+        'zakatmaal',
+        'infaq',
+        'sedekah',
+        'wakafpendidikan',
+        'wakafproduktif',
+        'infaqkesehatan',
+        'namabank_id',
+        'verifiedstatus_id',
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
+
     public function registerMediaConversions(Media $media = null): void
     {
         $this->addMediaConversion('thumb')->fit('crop', 50, 50);
@@ -91,9 +71,9 @@ class InputPerolehan extends Model implements HasMedia
         return $file;
     }
 
-    public function team()
+    public function verifiedstatus()
     {
-        return $this->belongsTo(Team::class, 'team_id');
+        return $this->belongsTo(VerifiedStatus::class, 'verifiedstatus_id');
     }
 
     protected function serializeDate(DateTimeInterface $date)

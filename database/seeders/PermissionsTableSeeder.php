@@ -200,103 +200,123 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 48,
-                'title' => 'team_create',
-            ],
-            [
-                'id'    => 49,
-                'title' => 'team_edit',
-            ],
-            [
-                'id'    => 50,
-                'title' => 'team_show',
-            ],
-            [
-                'id'    => 51,
-                'title' => 'team_delete',
-            ],
-            [
-                'id'    => 52,
-                'title' => 'team_access',
-            ],
-            [
-                'id'    => 53,
                 'title' => 'user_alert_create',
             ],
             [
-                'id'    => 54,
+                'id'    => 49,
                 'title' => 'user_alert_show',
             ],
             [
-                'id'    => 55,
+                'id'    => 50,
                 'title' => 'user_alert_delete',
             ],
             [
-                'id'    => 56,
+                'id'    => 51,
                 'title' => 'user_alert_access',
             ],
             [
-                'id'    => 57,
+                'id'    => 52,
                 'title' => 'input_perolehan_create',
             ],
             [
-                'id'    => 58,
+                'id'    => 53,
                 'title' => 'input_perolehan_edit',
             ],
             [
-                'id'    => 59,
+                'id'    => 54,
                 'title' => 'input_perolehan_show',
             ],
             [
-                'id'    => 60,
+                'id'    => 55,
                 'title' => 'input_perolehan_delete',
             ],
             [
-                'id'    => 61,
+                'id'    => 56,
                 'title' => 'input_perolehan_access',
             ],
             [
-                'id'    => 62,
+                'id'    => 57,
                 'title' => 'bank_create',
             ],
             [
-                'id'    => 63,
+                'id'    => 58,
                 'title' => 'bank_edit',
             ],
             [
-                'id'    => 64,
+                'id'    => 59,
                 'title' => 'bank_show',
             ],
             [
-                'id'    => 65,
+                'id'    => 60,
                 'title' => 'bank_delete',
             ],
             [
-                'id'    => 66,
+                'id'    => 61,
                 'title' => 'bank_access',
             ],
             [
+                'id'    => 62,
+                'title' => 'verified_status_create',
+            ],
+            [
+                'id'    => 63,
+                'title' => 'verified_status_edit',
+            ],
+            [
+                'id'    => 64,
+                'title' => 'verified_status_show',
+            ],
+            [
+                'id'    => 65,
+                'title' => 'verified_status_delete',
+            ],
+            [
+                'id'    => 66,
+                'title' => 'verified_status_access',
+            ],
+            [
                 'id'    => 67,
-                'title' => 'profile_password_edit',
+                'title' => 'verifikasi_perolehan_create',
             ],
             [
                 'id'    => 68,
-                'title' => 'account_dpd',
+                'title' => 'verifikasi_perolehan_edit',
             ],
             [
                 'id'    => 69,
-                'title' => 'account_dpc',
+                'title' => 'verifikasi_perolehan_show',
             ],
             [
                 'id'    => 70,
-                'title' => 'account_upa',
+                'title' => 'verifikasi_perolehan_delete',
             ],
             [
                 'id'    => 71,
-                'title' => 'account_anggota',
+                'title' => 'verifikasi_perolehan_access',
             ],
             [
                 'id'    => 72,
-                'title' => 'account_relawan',
+                'title' => 'team_create',
+            ],
+            [
+                'id'    => 73,
+                'title' => 'team_edit',
+            ],
+            [
+                'id'    => 74,
+                'title' => 'team_show',
+            ],
+            [
+                'id'    => 75,
+                'title' => 'team_delete',
+            ],
+            [
+                'id'    => 76,
+                'title' => 'team_access',
+            ],
+            [
+                'id'    => 77,
+                'title' => 'profile_password_edit',
             ],
         ];
 

@@ -6,28 +6,24 @@ use \DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class UserAlert extends Model
+class VerifiedStatus extends Model
 {
     use HasFactory;
 
-    public $table = 'user_alerts';
+    public $table = 'verified_statuses';
 
     protected $dates = [
         'created_at',
         'updated_at',
+        'deleted_at',
     ];
 
     protected $fillable = [
-        'alert_text',
-        'alert_link',
+        'status',
         'created_at',
         'updated_at',
+        'deleted_at',
     ];
-
-    public function users()
-    {
-        return $this->belongsToMany(User::class);
-    }
 
     protected function serializeDate(DateTimeInterface $date)
     {

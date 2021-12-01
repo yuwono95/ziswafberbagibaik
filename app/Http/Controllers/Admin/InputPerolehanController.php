@@ -10,7 +10,7 @@ use App\Http\Requests\StoreInputPerolehanRequest;
 use App\Http\Requests\UpdateInputPerolehanRequest;
 use App\Models\Bank;
 use App\Models\InputPerolehan;
-use App\Models\Team;
+use App\Models\VerifiedStatus;
 use Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -27,7 +27,7 @@ class InputPerolehanController extends Controller
         abort_if(Gate::denies('input_perolehan_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = InputPerolehan::with(['namabank', 'team'])->select(sprintf('%s.*', (new InputPerolehan())->table));
+            $query = InputPerolehan::with(['namabank', 'verifiedstatus'])->select(sprintf('%s.*', (new InputPerolehan())->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -93,19 +93,19 @@ class InputPerolehanController extends Controller
 
                 return '';
             });
-            $table->editColumn('verified', function ($row) {
-                return '<input type="checkbox" disabled ' . ($row->verified ? 'checked' : null) . '>';
+            $table->addColumn('verifiedstatus_status', function ($row) {
+                return $row->verifiedstatus ? $row->verifiedstatus->status : '';
             });
 
-            $table->rawColumns(['actions', 'placeholder', 'namabank', 'buktitransfer', 'verified']);
+            $table->rawColumns(['actions', 'placeholder', 'namabank', 'buktitransfer', 'verifiedstatus']);
 
             return $table->make(true);
         }
 
-        $banks = Bank::get();
-        $teams = Team::get();
+        $banks             = Bank::get();
+        $verified_statuses = VerifiedStatus::get();
 
-        return view('admin.inputPerolehans.index', compact('banks', 'teams'));
+        return view('admin.inputPerolehans.index', compact('banks', 'verified_statuses'));
     }
 
     public function create()
@@ -138,7 +138,7 @@ class InputPerolehanController extends Controller
 
         $namabanks = Bank::pluck('namabank', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $inputPerolehan->load('namabank', 'team');
+        $inputPerolehan->load('namabank', 'verifiedstatus');
 
         return view('admin.inputPerolehans.edit', compact('namabanks', 'inputPerolehan'));
     }
@@ -165,7 +165,7 @@ class InputPerolehanController extends Controller
     {
         abort_if(Gate::denies('input_perolehan_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $inputPerolehan->load('namabank', 'team');
+        $inputPerolehan->load('namabank', 'verifiedstatus');
 
         return view('admin.inputPerolehans.show', compact('inputPerolehan'));
     }

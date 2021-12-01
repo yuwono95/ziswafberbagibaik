@@ -16,23 +16,7 @@ class RolesTableSeeder extends Seeder
             ],
             [
                 'id'    => 2,
-                'title' => 'Admin DPD',
-            ],
-            [
-                'id'    => 3,
-                'title' => 'Admin DPC',
-            ],
-            [
-                'id'    => 4,
-                'title' => 'Admin UPA',
-            ],
-            [
-                'id'    => 5,
-                'title' => 'Anggota',
-            ],
-            [
-                'id'    => 6,
-                'title' => 'Relawan',
+                'title' => 'User',
             ],
         ];
 
