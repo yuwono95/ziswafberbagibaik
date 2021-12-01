@@ -76,8 +76,8 @@
                     <td>
                         <select class="search">
                             <option value>{{ trans('global.all') }}</option>
-                            @foreach($roles as $key => $item)
-                                <option value="{{ $item->title }}">{{ $item->title }}</option>
+                            @foreach($roles as $id => $title)
+                                <option value="{{ $title }}">{{ $title }}</option>
                             @endforeach
                         </select>
                     </td>
