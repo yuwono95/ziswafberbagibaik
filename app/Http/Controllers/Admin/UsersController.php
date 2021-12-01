@@ -22,11 +22,12 @@ class UsersController extends Controller
     public function index(Request $request)
     {
         abort_if(Gate::denies('user_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
+        
+        $userid = auth()->user()->id;
         if ($request->ajax()) {
              $query = User::with(['roles', 'team'])->select(sprintf('%s.*', (new User())->table)); 
-			if(auth()->user()->id != '1') {
-				$query = $query->where('id', '<>', 1);
+			if($userid != '1' && $userid != '2') {
+				$query = $query->where('id', '>', $userid);
 			}
             $table = Datatables::of($query);
 
@@ -70,7 +71,7 @@ class UsersController extends Controller
             $table->editColumn('roles', function ($row) {
                 $labels = [];
                 foreach ($row->roles as $role) {
-                    if($role->id != '1') {
+                    if($role->id != '1' ) {
                         $labels[] = sprintf('<span class="label label-info label-many">%s</span>', $role->title);
                     }
                 }
