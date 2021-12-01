@@ -256,66 +256,46 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 62,
-                'title' => 'verifikasi_perolehan_create',
+                'title' => 'top_ten_anggotum_create',
             ],
             [
                 'id'    => 63,
-                'title' => 'verifikasi_perolehan_edit',
+                'title' => 'top_ten_anggotum_edit',
             ],
             [
                 'id'    => 64,
-                'title' => 'verifikasi_perolehan_show',
+                'title' => 'top_ten_anggotum_show',
             ],
             [
                 'id'    => 65,
-                'title' => 'verifikasi_perolehan_delete',
+                'title' => 'top_ten_anggotum_delete',
             ],
             [
                 'id'    => 66,
-                'title' => 'verifikasi_perolehan_access',
+                'title' => 'top_ten_anggotum_access',
             ],
             [
                 'id'    => 67,
-                'title' => 'top_ten_anggota_create',
-            ],
-            [
-                'id'    => 68,
-                'title' => 'top_ten_anggota_edit',
-            ],
-            [
-                'id'    => 69,
-                'title' => 'top_ten_anggota_show',
-            ],
-            [
-                'id'    => 70,
-                'title' => 'top_ten_anggota_delete',
-            ],
-            [
-                'id'    => 71,
-                'title' => 'top_ten_anggota_access',
-            ],
-            [
-                'id'    => 72,
                 'title' => 'team_create',
             ],
             [
-                'id'    => 73,
+                'id'    => 68,
                 'title' => 'team_edit',
             ],
             [
-                'id'    => 74,
+                'id'    => 69,
                 'title' => 'team_show',
             ],
             [
-                'id'    => 75,
+                'id'    => 70,
                 'title' => 'team_delete',
             ],
             [
-                'id'    => 76,
+                'id'    => 71,
                 'title' => 'team_access',
             ],
             [
-                'id'    => 77,
+                'id'    => 72,
                 'title' => 'profile_password_edit',
             ],
         ];
