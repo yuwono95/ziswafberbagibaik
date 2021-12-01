@@ -84,12 +84,6 @@ class User extends Authenticatable
     {
         return $this->roles()->where('id', 1)->exists();
     }
-    
-    // That is new method
-    public function getIsTeamAdminAttribute()
-    {
-        return $this->is_admin || $this->team_admin;
-    }
 
     public function userUserAlerts()
     {
