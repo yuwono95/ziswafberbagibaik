@@ -256,23 +256,23 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 62,
-                'title' => 'top_ten_anggotum_create',
+                'title' => 'top_ten_anggota_create',
             ],
             [
                 'id'    => 63,
-                'title' => 'top_ten_anggotum_edit',
+                'title' => 'top_ten_anggota_edit',
             ],
             [
                 'id'    => 64,
-                'title' => 'top_ten_anggotum_show',
+                'title' => 'top_ten_anggota_show',
             ],
             [
                 'id'    => 65,
-                'title' => 'top_ten_anggotum_delete',
+                'title' => 'top_ten_anggota_delete',
             ],
             [
                 'id'    => 66,
-                'title' => 'top_ten_anggotum_access',
+                'title' => 'top_ten_anggota_access',
             ],
             [
                 'id'    => 67,
