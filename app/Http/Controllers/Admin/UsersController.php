@@ -89,6 +89,10 @@ class UsersController extends Controller
         abort_if(Gate::denies('user_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $roles = Role::pluck('title', 'id');
+        $index = array_search(['Super Admin','1'], $roles);
+        if($index !== false){
+          unset($roles[$index]);
+        }
 
         $teams = Team::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -108,7 +112,11 @@ class UsersController extends Controller
         abort_if(Gate::denies('user_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $roles = Role::pluck('title', 'id');
-
+        $index = array_search(['Super Admin','1'], $roles);
+        if($index !== false){
+          unset($roles[$index]);
+        }
+        
         $teams = Team::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $user->load('roles', 'team');
@@ -137,14 +145,21 @@ class UsersController extends Controller
     {
         abort_if(Gate::denies('user_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $user->delete();
+        if($user->id() != '1') {
+            $user->delete();
+        }
 
         return back();
     }
 
     public function massDestroy(MassDestroyUserRequest $request)
     {
-        User::whereIn('id', request('ids'))->delete();
+        $ids = request('ids');
+        $index = array_search('1', $ids);
+        if($index !== false){
+          unset($ids[$index]);
+        }
+        User::whereIn('id', $ids)->delete();
 
         return response(null, Response::HTTP_NO_CONTENT);
     }
