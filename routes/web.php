@@ -67,6 +67,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Bank
     Route::delete('banks/destroy', 'BankController@massDestroy')->name('banks.massDestroy');
+    Route::post('banks/parse-csv-import', 'BankController@parseCsvImport')->name('banks.parseCsvImport');
+    Route::post('banks/process-csv-import', 'BankController@processCsvImport')->name('banks.processCsvImport');
     Route::resource('banks', 'BankController');
 
     // Verified Status
@@ -77,15 +79,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('verifikasi-perolehans/destroy', 'VerifikasiPerolehanController@massDestroy')->name('verifikasi-perolehans.massDestroy');
     Route::resource('verifikasi-perolehans', 'VerifikasiPerolehanController');
 
-    // Team
-    Route::delete('teams/destroy', 'TeamController@massDestroy')->name('teams.massDestroy');
-    Route::post('teams/parse-csv-import', 'TeamController@parseCsvImport')->name('teams.parseCsvImport');
-    Route::post('teams/process-csv-import', 'TeamController@processCsvImport')->name('teams.processCsvImport');
-    Route::resource('teams', 'TeamController');
-
     // Top Ten Anggota
     Route::delete('top-ten-anggota/destroy', 'TopTenAnggotaController@massDestroy')->name('top-ten-anggota.massDestroy');
     Route::resource('top-ten-anggota', 'TopTenAnggotaController');
+
+    // Team
+    Route::delete('teams/destroy', 'TeamController@massDestroy')->name('teams.massDestroy');
+    Route::resource('teams', 'TeamController');
 
     Route::get('global-search', 'GlobalSearchController@search')->name('globalSearch');
     Route::get('messenger', 'MessengerController@index')->name('messenger.index');

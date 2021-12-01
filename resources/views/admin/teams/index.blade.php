@@ -6,10 +6,6 @@
             <a class="btn btn-success" href="{{ route('admin.teams.create') }}">
                 {{ trans('global.add') }} {{ trans('cruds.team.title_singular') }}
             </a>
-            <button class="btn btn-warning" data-toggle="modal" data-target="#csvImportModal">
-                {{ trans('global.app_csvImport') }}
-            </button>
-            @include('csvImport.modal', ['model' => 'Team', 'route' => 'admin.teams.parseCsvImport'])
         </div>
     </div>
 @endcan
@@ -19,47 +15,70 @@
     </div>
 
     <div class="card-body">
-        <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-Team">
-            <thead>
-                <tr>
-                    <th width="10">
+        <div class="table-responsive">
+            <table class=" table table-bordered table-striped table-hover datatable datatable-Team">
+                <thead>
+                    <tr>
+                        <th width="10">
 
-                    </th>
-                    <th>
-                        {{ trans('cruds.team.fields.id') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.team.fields.name') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.team.fields.owner') }}
-                    </th>
-                    <th>
-                        &nbsp;
-                    </th>
-                </tr>
-                <tr>
-                    <td>
-                    </td>
-                    <td>
-                        <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                    </td>
-                    <td>
-                        <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                    </td>
-                    <td>
-                        <select class="search">
-                            <option value>{{ trans('global.all') }}</option>
-                            @foreach($users as $key => $item)
-                                <option value="{{ $item->name }}">{{ $item->name }}</option>
-                            @endforeach
-                        </select>
-                    </td>
-                    <td>
-                    </td>
-                </tr>
-            </thead>
-        </table>
+                        </th>
+                        <th>
+                            {{ trans('cruds.team.fields.id') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.team.fields.name') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.team.fields.owner') }}
+                        </th>
+                        <th>
+                            &nbsp;
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($teams as $key => $team)
+                        <tr data-entry-id="{{ $team->id }}">
+                            <td>
+
+                            </td>
+                            <td>
+                                {{ $team->id ?? '' }}
+                            </td>
+                            <td>
+                                {{ $team->name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $team->owner->name ?? '' }}
+                            </td>
+                            <td>
+                                @can('team_show')
+                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.teams.show', $team->id) }}">
+                                        {{ trans('global.view') }}
+                                    </a>
+                                @endcan
+
+                                @can('team_edit')
+                                    <a class="btn btn-xs btn-info" href="{{ route('admin.teams.edit', $team->id) }}">
+                                        {{ trans('global.edit') }}
+                                    </a>
+                                @endcan
+
+                                @can('team_delete')
+                                    <form action="{{ route('admin.teams.destroy', $team->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
+                                    </form>
+                                @endcan
+
+                            </td>
+
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 
@@ -72,14 +91,14 @@
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
 @can('team_delete')
-  let deleteButtonTrans = '{{ trans('global.datatables.delete') }}';
+  let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
   let deleteButton = {
     text: deleteButtonTrans,
     url: "{{ route('admin.teams.massDestroy') }}",
     className: 'btn-danger',
     action: function (e, dt, node, config) {
-      var ids = $.map(dt.rows({ selected: true }).data(), function (entry) {
-          return entry.id
+      var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
+          return $(entry).data('entry-id')
       });
 
       if (ids.length === 0) {
@@ -101,52 +120,18 @@
   dtButtons.push(deleteButton)
 @endcan
 
-  let dtOverrideGlobals = {
-    buttons: dtButtons,
-    processing: true,
-    serverSide: true,
-    retrieve: true,
-    aaSorting: [],
-    ajax: "{{ route('admin.teams.index') }}",
-    columns: [
-      { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
-{ data: 'name', name: 'name' },
-{ data: 'owner_name', name: 'owner.name' },
-{ data: 'actions', name: '{{ trans('global.actions') }}' }
-    ],
+  $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
     order: [[ 1, 'desc' ]],
     pageLength: 100,
-  };
-  let table = $('.datatable-Team').DataTable(dtOverrideGlobals);
+  });
+  let table = $('.datatable-Team:not(.ajaxTable)').DataTable({ buttons: dtButtons })
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
   
-let visibleColumnsIndexes = null;
-$('.datatable thead').on('input', '.search', function () {
-      let strict = $(this).attr('strict') || false
-      let value = strict && this.value ? "^" + this.value + "$" : this.value
-
-      let index = $(this).parent().index()
-      if (visibleColumnsIndexes !== null) {
-        index = visibleColumnsIndexes[index]
-      }
-
-      table
-        .column(index)
-        .search(value, strict)
-        .draw()
-  });
-table.on('column-visibility.dt', function(e, settings, column, state) {
-      visibleColumnsIndexes = []
-      table.columns(":visible").every(function(colIdx) {
-          visibleColumnsIndexes.push(colIdx);
-      });
-  })
-});
+})
 
 </script>
 @endsection
