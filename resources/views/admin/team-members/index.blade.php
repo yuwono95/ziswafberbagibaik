@@ -73,13 +73,13 @@
                     </td>
                     <td>
                     </td>
-                    <td>
+                    <td><!--
                         <select class="search">
                             <option value>{{ trans('global.all') }}</option>
                             @foreach($roles as $id => $title)
                                 <option value="{{ $title }}">{{ $title }}</option>
                             @endforeach
-                        </select>
+                        </select> -->
                     </td>
                     <td>
                     </td>
