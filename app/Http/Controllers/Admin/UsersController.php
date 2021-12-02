@@ -99,7 +99,7 @@ class UsersController extends Controller
         }
 
         $roles  = Role::get();
-        $roles->where('id', '<', $roleid)->delete();
+        $roles->where('id', '<', $roleid)->remove();
         $teams  = Team::get();
 
         return view('admin.users.index', compact('roles', 'teams', 'roleid'));
