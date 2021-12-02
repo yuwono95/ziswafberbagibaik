@@ -39,7 +39,7 @@ class UsersController extends Controller
         
         $roleid = $this->getRoleId();
         if ($request->ajax()) {
-            $query = User::with(['roles', 'team'])->select(sprintf('%s.*', (new User())->table));
+            $query = User::with(['roles', 'team'])->select(sprintf('%s.* , role_user.role_id as roleid', (new User())->table));
             if($roleid > 1) {
                 $query = $query->join('role_user','users.id','=','role_user.user_id')->where('role_user.role_id', '>=', $roleid);
             }
@@ -54,13 +54,20 @@ class UsersController extends Controller
                 $deleteGate = 'user_delete';
                 $crudRoutePart = 'users';
 
+                if($row->roleid > $roleid) {
+                    return view('partials.datatablesActions', compact(
+                        'viewGate',
+                        'editGate',
+                        'deleteGate',
+                        'crudRoutePart',
+                        'row'
+                    ));
+                }
                 return view('partials.datatablesActions', compact(
-                'viewGate',
-                'editGate',
-                'deleteGate',
-                'crudRoutePart',
-                'row'
-            ));
+                    'viewGate',
+                    'crudRoutePart',
+                    'row'
+                ));
             });
 
             $table->editColumn('id', function ($row) {
