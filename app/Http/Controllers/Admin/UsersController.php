@@ -89,10 +89,16 @@ class UsersController extends Controller
             return $table->make(true);
         }
 
-        $roles = Role::get();
-        $teams = Team::get();
+        $roles  = Role::get();
+        $teams  = Team::get();
+        $roleid = 4;
+        if($isAdminDPD) {
+            $roleid = 2;
+        } elseif($isAdminDPC) {
+            $roleid = 3;
+        }
 
-        return view('admin.users.index', compact('roles', 'teams'));
+        return view('admin.users.index', compact('roles', 'teams', 'roleid'));
     }
 
     public function create()
