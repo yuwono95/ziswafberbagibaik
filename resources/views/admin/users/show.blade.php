@@ -86,7 +86,7 @@
                             {{ trans('cruds.user.fields.team') }}
                         </th>
                         <td>
-                            {{ $user->team }}
+                            {{ $user->team->name }}
                         </td>
                     </tr>
                 </tbody>
