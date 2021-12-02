@@ -23,7 +23,7 @@ class UsersController extends Controller
         $isAdminDPD = auth()->user()->roles->contains(2);
         $isAdminDPC = auth()->user()->roles->contains(3);
         $roleid = 4;
-        if($user->id == '1') {
+        if(auth()->user()->id == 1) {
             $roleid = 1;
         } elseif($isAdminDPD) {
             $roleid = 2;
