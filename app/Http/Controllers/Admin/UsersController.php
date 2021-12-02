@@ -98,8 +98,7 @@ class UsersController extends Controller
             return $table->make(true);
         }
 
-        $roles  = Role::get();
-        $roles = $roles->where('id', '>=', $roleid);
+        $roles  = Role::where('id', '>=', $roleid)->get();
         $teams  = Team::get();
 
         return view('admin.users.index', compact('roles', 'teams', 'roleid'));
