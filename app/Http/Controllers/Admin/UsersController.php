@@ -19,7 +19,7 @@ class UsersController extends Controller
 {
     use CsvImportTrait;
     
-    public function getRoleId() {
+    private function getRoleId() {
         $isAdminDPD = auth()->user()->roles->contains(2);
         $isAdminDPC = auth()->user()->roles->contains(3);
         $roleid = 4;
@@ -37,7 +37,7 @@ class UsersController extends Controller
     {
         abort_if(Gate::denies('user_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         
-        $roleid = getRoleId();
+        $roleid = $this->getRoleId();
         if ($request->ajax()) {
             $query = User::with(['roles', 'team'])->select(sprintf('%s.*', (new User())->table));
             if($roleid > 1) {
