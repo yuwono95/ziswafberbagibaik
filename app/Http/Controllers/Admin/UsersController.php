@@ -40,12 +40,9 @@ class UsersController extends Controller
         $roleid = getRoleId();
         if ($request->ajax()) {
             $query = User::with(['roles', 'team'])->select(sprintf('%s.*', (new User())->table));
-            if($roleid == 2) {
-                $query = $query->where('id', '>', 1);
+            if($roleid > 1) {
+                $query = $query->join('role_user','users.id','=','role_user.user_id')->where('role_user.role_id', '>', $roleid);
             }
-			elseif($roleid > 2) {
-				$query = $query->where('id', '>', 2);
-			}
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
