@@ -19,7 +19,7 @@ class UsersController extends Controller
 {
     use CsvImportTrait;
     
-    protected function getRoleId() {
+    public function getRoleId() {
         $isAdminDPD = auth()->user()->roles->contains(2);
         $isAdminDPC = auth()->user()->roles->contains(3);
         $roleid = 4;
