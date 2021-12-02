@@ -41,7 +41,7 @@ class UsersController extends Controller
         if ($request->ajax()) {
             $query = User::with(['roles', 'team'])->select(sprintf('%s.*', (new User())->table));
             if($roleid > 1) {
-                $query = $query->join('role_user','users.id','=','role_user.user_id')->where('role_user.role_id', '>=', $roleid);
+                $query = $query->join('role_user','users.id','=','role_user.user_id')->where('role_user.role_id', '>=', 2);
             }
             $table = Datatables::of($query);
 
@@ -54,21 +54,7 @@ class UsersController extends Controller
                 $deleteGate = 'user_delete';
                 $crudRoutePart = 'users';
                 
-                $roleExists = False;
-                foreach ($row->roles as $role) {
-                    if($role->id < 2) {
-                        $roleExists = True;
-                        break;
-                    }
-                }
-                
-                if($roleExists) {
-                    return view('partials.datatablesActions', compact(
-                        'viewGate',
-                        'crudRoutePart',
-                        'row'
-                    ));
-                }
+
                 return view('partials.datatablesActions', compact(
                     'viewGate',
                     'editGate',
