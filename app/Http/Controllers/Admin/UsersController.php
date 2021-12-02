@@ -18,20 +18,32 @@ use Yajra\DataTables\Facades\DataTables;
 class UsersController extends Controller
 {
     use CsvImportTrait;
+    
+    function private getRoleId() {
+        $isAdminDPD = auth()->user()->roles->contains(2);
+        $isAdminDPC = auth()->user()->roles->contains(3);
+        $roleid = 4;
+        if($user->id == '1') {
+            $roleid = 1;
+        } elseif($isAdminDPD) {
+            $roleid = 2;
+        } elseif($isAdminDPC) {
+            $roleid = 3;
+        }
+        return $roleid;
+    }
 
     public function index(Request $request)
     {
         abort_if(Gate::denies('user_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         
-        $isAdminDPD = auth()->user()->roles->contains(2);
-        $isAdminDPC = auth()->user()->roles->contains(3);
-        $userid = auth()->user()->id;
+        $roleid = getRoleId();
         if ($request->ajax()) {
             $query = User::with(['roles', 'team'])->select(sprintf('%s.*', (new User())->table));
-            if($isAdminDPD) {
-                $query = $query->where('id', '<>', 1);
+            if($roleid == 2) {
+                $query = $query->where('id', '>', 1);
             }
-			elseif($isAdminDPC) {
+			elseif($roleid > 2) {
 				$query = $query->where('id', '>', 2);
 			}
             $table = Datatables::of($query);
@@ -91,12 +103,6 @@ class UsersController extends Controller
 
         $roles  = Role::get();
         $teams  = Team::get();
-        $roleid = 4;
-        if($isAdminDPD) {
-            $roleid = 2;
-        } elseif($isAdminDPC) {
-            $roleid = 3;
-        }
 
         return view('admin.users.index', compact('roles', 'teams', 'roleid'));
     }
