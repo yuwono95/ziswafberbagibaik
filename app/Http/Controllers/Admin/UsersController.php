@@ -41,7 +41,7 @@ class UsersController extends Controller
         if ($request->ajax()) {
             $query = User::with(['roles', 'team'])->select(sprintf('%s.*', (new User())->table));
             if($roleid > 1) {
-                $query = $query->join('role_user','users.id','=','role_user.user_id')->where('role_user.role_id', '>', $roleid);
+                $query = $query->join('role_user','users.id','=','role_user.user_id')->where('role_user.role_id', '>=', $roleid);
             }
             $table = Datatables::of($query);
 
@@ -99,6 +99,7 @@ class UsersController extends Controller
         }
 
         $roles  = Role::get();
+        $roles->where('id', '<', $roleid)->delete();
         $teams  = Team::get();
 
         return view('admin.users.index', compact('roles', 'teams', 'roleid'));
