@@ -56,7 +56,7 @@ class UsersController extends Controller
                 
                 $roleExists = False;
                 foreach ($row->roles as $role) {
-                    if($role->id < $this->$roleid) {
+                    if($role->id < 2) {
                         $roleExists = True;
                         break;
                     }
