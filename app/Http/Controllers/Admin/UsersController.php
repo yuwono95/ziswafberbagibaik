@@ -120,7 +120,7 @@ class UsersController extends Controller
         $roles      = Role::where('id', '>=', $roleid)->get();
         $teams      = Team::get();
 
-        return view('admin.users.index', compact('kecamatans', 'roles', 'teams'));
+        return view('admin.users.index', compact('kecamatans', 'roles', 'teams', 'roleid'));
     }
 
     public function create()
