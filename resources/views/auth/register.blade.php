@@ -49,7 +49,7 @@
                                 <i class="fa fa-phone fa-fw"></i>
                             </span>
                         </div>
-						<input class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}" type="text" name="phone" value="{{ old('phone', $user->phone) }}" required>
+						<input class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}" type="text" name="phone" value="{{ old('phone', null) }}" required>
 						@if($errors->has('phone'))
 							<div class="invalid-feedback">
 								{{ $errors->first('phone') }}
