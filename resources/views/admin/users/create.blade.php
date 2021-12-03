@@ -52,6 +52,7 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.user.fields.approved_helper') }}</span>
             </div>
+            @if($roleid < 3)
             <div class="form-group">
                 <div class="form-check {{ $errors->has('team_admin') ? 'is-invalid' : '' }}">
                     <input type="hidden" name="team_admin" value="0">
@@ -65,6 +66,7 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.user.fields.team_admin_helper') }}</span>
             </div>
+            @endif
             <div class="form-group">
                 <label class="required" for="roles">{{ trans('cruds.user.fields.roles') }}</label>
                 <div style="padding-bottom: 4px">
@@ -73,7 +75,9 @@
                 </div>
                 <select class="form-control select2 {{ $errors->has('roles') ? 'is-invalid' : '' }}" name="roles[]" id="roles" multiple required>
                     @foreach($roles as $id => $role)
+                        @if($id > $roleid)
                         <option value="{{ $id }}" {{ in_array($id, old('roles', [])) ? 'selected' : '' }}>{{ $role }}</option>
+                        @endif
                     @endforeach
                 </select>
                 @if($errors->has('roles'))
