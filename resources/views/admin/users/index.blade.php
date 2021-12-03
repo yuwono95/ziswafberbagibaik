@@ -35,6 +35,9 @@
                         {{ trans('cruds.user.fields.email') }}
                     </th>
                     <th>
+                        {{ trans('cruds.user.fields.phone') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.user.fields.email_verified_at') }}
                     </th>
                     <th>
@@ -58,6 +61,9 @@
                 </tr>
                 <tr>
                     <td>
+                    </td>
+                    <td>
+                        <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                     </td>
                     <td>
                         <input class="search" type="text" placeholder="{{ trans('global.search') }}">
@@ -116,18 +122,8 @@
     url: "{{ route('admin.users.massDestroy') }}",
     className: 'btn-danger',
     action: function (e, dt, node, config) {
-	  const roles = [];
-	  @foreach($roles as $key => $item)
-	  roles.push("{{ $item->title }}")
-	  @endforeach
       var ids = $.map(dt.rows({ selected: true }).data(), function (entry) {
-        let tmp = document.createElement("DIV")
-        tmp.innerHTML = entry.roles
-        var rolename = tmp.textContent || tmp.innerText || ""
-		if(roles.indexOf(rolename) + 1 > {{ $roleid }}) {
-			return entry.id	
-		}
-		return 0
+          return entry.id
       });
 
       if (ids.length === 0) {
@@ -161,6 +157,7 @@
 { data: 'id', name: 'id' },
 { data: 'name', name: 'name' },
 { data: 'email', name: 'email' },
+{ data: 'phone', name: 'phone' },
 { data: 'email_verified_at', name: 'email_verified_at' },
 { data: 'approved', name: 'approved' },
 { data: 'verified', name: 'verified' },

@@ -77,6 +77,8 @@ return [
             'team_admin_helper'         => ' ',
             'kecamatan'                 => 'Kecamatan',
             'kecamatan_helper'          => ' ',
+            'phone'                     => 'Phone',
+            'phone_helper'              => ' ',
         ],
     ],
     'report' => [
