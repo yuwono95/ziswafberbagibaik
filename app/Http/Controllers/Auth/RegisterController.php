@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Team;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -45,7 +46,9 @@ class RegisterController extends Controller
             return redirect()->route('register');
         }
 
-        return view('auth.register');
+		$teams = Team::get();
+		
+        return view('auth.register', compact('teams'));
     }
 
     /**
@@ -56,9 +59,11 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name'     => ['required', 'string', 'max:255'],
-            'email'    => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'name'      => ['required', 'string', 'max:255'],
+            'email'     => ['required', 'string', 'email', 'max:255', 'unique:users'],
+			'phone'     => ['required', 'string', 'max:15'],
+			'kecamatan' => ['required', 'string', 'max:255'],
+            'password'  => ['required', 'string', 'min:8', "max:10", 'confirmed'],
         ]);
     }
 
@@ -70,14 +75,16 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $user = User::create([
-            'name'     => $data['name'],
-            'email'    => $data['email'],
-            'password' => Hash::make($data['password']),
-            'team_id'  => request()->input('team', null),
+            'name'         => $data['name'],
+            'email'        => $data['email'],
+			'phone'        => $data['phone'],
+			'kecamatan_id' => request()->input('kecamatan', null),
+            'password'     => Hash::make($data['password']),
+            'team_id'      => request()->input('team', null),
         ]);
 
         if (!request()->has('team')) {
-            $team = \App\Models\Team::create([
+            $team = Team::create([
                 'owner_id' => $user->id,
                 'name'     => $data['email'],
             ]);
