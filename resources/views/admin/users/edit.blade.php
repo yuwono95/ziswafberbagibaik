@@ -67,6 +67,20 @@
                 <span class="help-block">{{ trans('cruds.user.fields.team_admin_helper') }}</span>
             </div>
             <div class="form-group">
+                <label class="required" for="kecamatan_id">{{ trans('cruds.user.fields.kecamatan') }}</label>
+                <select class="form-control select2 {{ $errors->has('kecamatan') ? 'is-invalid' : '' }}" name="kecamatan_id" id="kecamatan_id" required>
+                    @foreach($kecamatans as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('kecamatan_id') ? old('kecamatan_id') : $user->kecamatan->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('kecamatan'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('kecamatan') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.user.fields.kecamatan_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label class="required" for="roles">{{ trans('cruds.user.fields.roles') }}</label>
                 <div style="padding-bottom: 4px">
                     <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>

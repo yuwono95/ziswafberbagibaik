@@ -73,6 +73,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.user.fields.kecamatan') }}
+                        </th>
+                        <td>
+                            {{ $user->kecamatan->namakecamatan ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.user.fields.roles') }}
                         </th>
                         <td>
