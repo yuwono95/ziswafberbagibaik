@@ -75,9 +75,6 @@
                         <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                     </td>
                     <td>
-                        <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                    </td>
-                    <td>
                     </td>
                     <td>
                     </td>
@@ -122,8 +119,18 @@
     url: "{{ route('admin.users.massDestroy') }}",
     className: 'btn-danger',
     action: function (e, dt, node, config) {
+	  const roles = [];
+	  @foreach($roles as $key => $item)
+	  roles.push("{{ $item->title }}")
+	  @endforeach
       var ids = $.map(dt.rows({ selected: true }).data(), function (entry) {
-          return entry.id
+        let tmp = document.createElement("DIV")
+        tmp.innerHTML = entry.roles
+        var rolename = tmp.textContent || tmp.innerText || ""
+		if(roles.indexOf(rolename) + 1 > {{ $roleid }}) {
+			return entry.id	
+		}
+		return 0
       });
 
       if (ids.length === 0) {
