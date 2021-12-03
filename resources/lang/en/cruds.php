@@ -213,4 +213,22 @@ return [
             'owner_helper'      => ' ',
         ],
     ],
+    'kecamatan' => [
+        'title'          => 'Kecamatan',
+        'title_singular' => 'Kecamatan',
+        'fields'         => [
+            'id'                   => 'ID',
+            'id_helper'            => ' ',
+            'namakecamatan'        => 'Nama Kecamatan',
+            'namakecamatan_helper' => ' ',
+            'created_at'           => 'Created at',
+            'created_at_helper'    => ' ',
+            'updated_at'           => 'Updated at',
+            'updated_at_helper'    => ' ',
+            'deleted_at'           => 'Deleted at',
+            'deleted_at_helper'    => ' ',
+            'team'                 => 'Team',
+            'team_helper'          => ' ',
+        ],
+    ],
 ];

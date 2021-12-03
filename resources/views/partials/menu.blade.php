@@ -174,6 +174,16 @@
                 </a>
             </li>
         @endcan
+        @can('kecamatan_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.kecamatans.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/kecamatans") || request()->is("admin/kecamatans/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.kecamatan.title') }}
+                </a>
+            </li>
+        @endcan
         @can('verified_status_access')
             <li class="c-sidebar-nav-item">
                 <a href="{{ route("admin.verified-statuses.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/verified-statuses") || request()->is("admin/verified-statuses/*") ? "c-active" : "" }}">

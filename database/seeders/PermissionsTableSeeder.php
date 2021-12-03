@@ -256,23 +256,23 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 62,
-                'title' => 'top_ten_anggota_create',
+                'title' => 'top_ten_anggotum_create',
             ],
             [
                 'id'    => 63,
-                'title' => 'top_ten_anggota_edit',
+                'title' => 'top_ten_anggotum_edit',
             ],
             [
                 'id'    => 64,
-                'title' => 'top_ten_anggota_show',
+                'title' => 'top_ten_anggotum_show',
             ],
             [
                 'id'    => 65,
-                'title' => 'top_ten_anggota_delete',
+                'title' => 'top_ten_anggotum_delete',
             ],
             [
                 'id'    => 66,
-                'title' => 'top_ten_anggota_access',
+                'title' => 'top_ten_anggotum_access',
             ],
             [
                 'id'    => 67,
@@ -296,6 +296,26 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 72,
+                'title' => 'kecamatan_create',
+            ],
+            [
+                'id'    => 73,
+                'title' => 'kecamatan_edit',
+            ],
+            [
+                'id'    => 74,
+                'title' => 'kecamatan_show',
+            ],
+            [
+                'id'    => 75,
+                'title' => 'kecamatan_delete',
+            ],
+            [
+                'id'    => 76,
+                'title' => 'kecamatan_access',
+            ],
+            [
+                'id'    => 77,
                 'title' => 'profile_password_edit',
             ],
         ];
