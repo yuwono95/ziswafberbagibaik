@@ -127,10 +127,11 @@ class UsersController extends Controller
         if($index !== false){
           unset($roles[$index]);
         }
+        $roleid = $this->getRoleId();
 
         $teams = Team::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.users.create', compact('roles', 'teams'));
+        return view('admin.users.create', compact('roles', 'teams', 'roleid'));
     }
 
     public function store(StoreUserRequest $request)
