@@ -26,9 +26,6 @@
 
                     </th>
                     <th>
-                        {{ trans('cruds.user.fields.id') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.user.fields.name') }}
                     </th>
                     <th>
@@ -38,13 +35,7 @@
                         {{ trans('cruds.user.fields.phone') }}
                     </th>
                     <th>
-                        {{ trans('cruds.user.fields.email_verified_at') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.user.fields.approved') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.user.fields.verified') }}
                     </th>
                     <th>
                         {{ trans('cruds.user.fields.team_admin') }}
@@ -70,11 +61,6 @@
                     </td>
                     <td>
                         <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                    </td>
-                    <td>
-                        <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                    </td>
-                    <td>
                     </td>
                     <td>
                     </td>
@@ -119,18 +105,18 @@
     url: "{{ route('admin.users.massDestroy') }}",
     className: 'btn-danger',
     action: function (e, dt, node, config) {
-	  const roles = [];
-	  @foreach($roles as $key => $item)
-	  roles.push("{{ $item->title }}")
-	  @endforeach
+          const roles = [];
+          @foreach($roles as $key => $item)
+          roles.push("{{ $item->title }}")
+          @endforeach
       var ids = $.map(dt.rows({ selected: true }).data(), function (entry) {
         let tmp = document.createElement("DIV")
         tmp.innerHTML = entry.roles
         var rolename = tmp.textContent || tmp.innerText || ""
-		if(roles.indexOf(rolename) + 1 > {{ $roleid }}) {
-			return entry.id	
-		}
-		return 0
+                if(roles.indexOf(rolename) + 1 > {{ $roleid }}) {
+                        return entry.id
+                }
+                return 0
       });
 
       if (ids.length === 0) {
@@ -161,13 +147,10 @@
     ajax: "{{ route('admin.users.index') }}",
     columns: [
       { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
 { data: 'name', name: 'name' },
 { data: 'email', name: 'email' },
 { data: 'phone', name: 'phone' },
-{ data: 'email_verified_at', name: 'email_verified_at' },
 { data: 'approved', name: 'approved' },
-{ data: 'verified', name: 'verified' },
 { data: 'team_admin', name: 'team_admin' },
 { data: 'kecamatan_namakecamatan', name: 'kecamatan.namakecamatan' },
 { data: 'roles', name: 'roles.title' },
@@ -182,7 +165,7 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-  
+
 let visibleColumnsIndexes = null;
 $('.datatable thead').on('input', '.search', function () {
       let strict = $(this).attr('strict') || false
