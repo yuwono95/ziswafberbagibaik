@@ -29,6 +29,9 @@
                             {{ trans('cruds.team.fields.name') }}
                         </th>
                         <th>
+                            {{ trans('cruds.team.fields.kecamatan') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.team.fields.owner') }}
                         </th>
                         <th>
@@ -47,6 +50,9 @@
                             </td>
                             <td>
                                 {{ $team->name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $team->kecamatan->namakecamatan ?? '' }}
                             </td>
                             <td>
                                 {{ $team->owner->name ?? '' }}

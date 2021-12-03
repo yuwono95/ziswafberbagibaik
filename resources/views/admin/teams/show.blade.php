@@ -33,6 +33,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.team.fields.kecamatan') }}
+                        </th>
+                        <td>
+                            {{ $team->kecamatan->namakecamatan ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.team.fields.owner') }}
                         </th>
                         <td>

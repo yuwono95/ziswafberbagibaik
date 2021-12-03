@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyTeamRequest;
 use App\Http\Requests\StoreTeamRequest;
 use App\Http\Requests\UpdateTeamRequest;
+use App\Models\Kecamatan;
 use App\Models\Team;
 use Gate;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ class TeamController extends Controller
     {
         abort_if(Gate::denies('team_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $teams = Team::with(['owner'])->get();
+        $teams = Team::with(['kecamatan', 'owner'])->get();
 
         return view('admin.teams.index', compact('teams'));
     }
@@ -26,7 +27,9 @@ class TeamController extends Controller
     {
         abort_if(Gate::denies('team_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.teams.create');
+        $kecamatans = Kecamatan::pluck('namakecamatan', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.teams.create', compact('kecamatans'));
     }
 
     public function store(StoreTeamRequest $request)
@@ -42,9 +45,11 @@ class TeamController extends Controller
     {
         abort_if(Gate::denies('team_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $team->load('owner');
+        $kecamatans = Kecamatan::pluck('namakecamatan', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.teams.edit', compact('team'));
+        $team->load('kecamatan', 'owner');
+
+        return view('admin.teams.edit', compact('kecamatans', 'team'));
     }
 
     public function update(UpdateTeamRequest $request, Team $team)
@@ -58,7 +63,7 @@ class TeamController extends Controller
     {
         abort_if(Gate::denies('team_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $team->load('owner');
+        $team->load('kecamatan', 'owner');
 
         return view('admin.teams.show', compact('team'));
     }
