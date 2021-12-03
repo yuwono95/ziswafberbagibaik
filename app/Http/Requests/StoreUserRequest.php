@@ -28,6 +28,10 @@ class StoreUserRequest extends FormRequest
             'password' => [
                 'required',
             ],
+            'kecamatan_id' => [
+                'required',
+                'integer',
+            ],
             'roles.*' => [
                 'integer',
             ],

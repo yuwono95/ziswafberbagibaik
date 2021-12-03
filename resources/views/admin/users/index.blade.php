@@ -47,6 +47,9 @@
                         {{ trans('cruds.user.fields.team_admin') }}
                     </th>
                     <th>
+                        {{ trans('cruds.user.fields.kecamatan') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.user.fields.roles') }}
                     </th>
                     <th>
@@ -73,6 +76,14 @@
                     <td>
                     </td>
                     <td>
+                    </td>
+                    <td>
+                        <select class="search">
+                            <option value>{{ trans('global.all') }}</option>
+                            @foreach($kecamatans as $key => $item)
+                                <option value="{{ $item->namakecamatan }}">{{ $item->namakecamatan }}</option>
+                            @endforeach
+                        </select>
                     </td>
                     <td>
                         <select class="search">
@@ -144,6 +155,7 @@
 { data: 'approved', name: 'approved' },
 { data: 'verified', name: 'verified' },
 { data: 'team_admin', name: 'team_admin' },
+{ data: 'kecamatan_namakecamatan', name: 'kecamatan.namakecamatan' },
 { data: 'roles', name: 'roles.title' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],

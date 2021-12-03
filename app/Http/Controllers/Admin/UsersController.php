@@ -7,6 +7,7 @@ use App\Http\Controllers\Traits\CsvImportTrait;
 use App\Http\Requests\MassDestroyUserRequest;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use App\Models\Kecamatan;
 use App\Models\Role;
 use App\Models\Team;
 use App\Models\User;
@@ -24,7 +25,7 @@ class UsersController extends Controller
         abort_if(Gate::denies('user_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = User::with(['roles', 'team'])->select(sprintf('%s.*', (new User())->table));
+            $query = User::with(['kecamatan', 'roles', 'team'])->select(sprintf('%s.*', (new User())->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -64,6 +65,10 @@ class UsersController extends Controller
             $table->editColumn('team_admin', function ($row) {
                 return '<input type="checkbox" disabled ' . ($row->team_admin ? 'checked' : null) . '>';
             });
+            $table->addColumn('kecamatan_namakecamatan', function ($row) {
+                return $row->kecamatan ? $row->kecamatan->namakecamatan : '';
+            });
+
             $table->editColumn('roles', function ($row) {
                 $labels = [];
                 foreach ($row->roles as $role) {
@@ -73,26 +78,29 @@ class UsersController extends Controller
                 return implode(' ', $labels);
             });
 
-            $table->rawColumns(['actions', 'placeholder', 'approved', 'verified', 'team_admin', 'roles']);
+            $table->rawColumns(['actions', 'placeholder', 'approved', 'verified', 'team_admin', 'kecamatan', 'roles']);
 
             return $table->make(true);
         }
 
-        $roles = Role::get();
-        $teams = Team::get();
+        $kecamatans = Kecamatan::get();
+        $roles      = Role::get();
+        $teams      = Team::get();
 
-        return view('admin.users.index', compact('roles', 'teams'));
+        return view('admin.users.index', compact('kecamatans', 'roles', 'teams'));
     }
 
     public function create()
     {
         abort_if(Gate::denies('user_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $kecamatans = Kecamatan::pluck('namakecamatan', 'id')->prepend(trans('global.pleaseSelect'), '');
+
         $roles = Role::pluck('title', 'id');
 
         $teams = Team::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.users.create', compact('roles', 'teams'));
+        return view('admin.users.create', compact('kecamatans', 'roles', 'teams'));
     }
 
     public function store(StoreUserRequest $request)
@@ -107,13 +115,15 @@ class UsersController extends Controller
     {
         abort_if(Gate::denies('user_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $kecamatans = Kecamatan::pluck('namakecamatan', 'id')->prepend(trans('global.pleaseSelect'), '');
+
         $roles = Role::pluck('title', 'id');
 
         $teams = Team::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $user->load('roles', 'team');
+        $user->load('kecamatan', 'roles', 'team');
 
-        return view('admin.users.edit', compact('roles', 'teams', 'user'));
+        return view('admin.users.edit', compact('kecamatans', 'roles', 'teams', 'user'));
     }
 
     public function update(UpdateUserRequest $request, User $user)
@@ -128,7 +138,7 @@ class UsersController extends Controller
     {
         abort_if(Gate::denies('user_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $user->load('roles', 'team', 'userUserAlerts');
+        $user->load('kecamatan', 'roles', 'team', 'userUserAlerts');
 
         return view('admin.users.show', compact('user'));
     }

@@ -46,6 +46,7 @@ class User extends Authenticatable
         'created_at',
         'updated_at',
         'team_admin',
+        'kecamatan_id',
         'deleted_at',
         'team_id',
     ];
@@ -120,6 +121,11 @@ class User extends Authenticatable
     public function setVerifiedAtAttribute($value)
     {
         $this->attributes['verified_at'] = $value ? Carbon::createFromFormat(config('panel.date_format') . ' ' . config('panel.time_format'), $value)->format('Y-m-d H:i:s') : null;
+    }
+
+    public function kecamatan()
+    {
+        return $this->belongsTo(Kecamatan::class, 'kecamatan_id');
     }
 
     public function roles()
