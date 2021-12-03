@@ -20,56 +20,23 @@ class UsersController extends Controller
 {
     use CsvImportTrait;
 
-    private function getRoleId() {
-        $isSysAdmin = auth()->user()->roles->contains(1);
-        $isAdminDPD = auth()->user()->roles->contains(2);
-        $isAdminDPC = auth()->user()->roles->contains(3);
-        $roleid = 4;
-        if($isSysAdmin) {
-            $roleid = 1;
-        } elseif($isAdminDPD) {
-            $roleid = 2;
-        } elseif($isAdminDPC) {
-            $roleid = 3;
-        }
-        return $roleid;
-    }
-    
     public function index(Request $request)
     {
         abort_if(Gate::denies('user_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $roleid = $this->getRoleId();
         if ($request->ajax()) {
             $query = User::with(['kecamatan', 'roles', 'team'])->select(sprintf('%s.*', (new User())->table));
-            if($roleid > 1) {
-                $query = $query->join('role_user','users.id','=','role_user.user_id')->where('role_user.role_id', '>=', $roleid);
-            }
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
             $table->addColumn('actions', '&nbsp;');
 
             $table->editColumn('actions', function ($row) {
-                $roleid = $this->getRoleId();
                 $viewGate = 'user_show';
                 $editGate = 'user_edit';
                 $deleteGate = 'user_delete';
                 $crudRoutePart = 'users';
-                
-                $roleExists = False;
-                foreach ($row->roles as $role) {
-                    if($role->id <= $roleid) {
-                        $roleExists = True;
-                        break;
-                    }
-                }
 
-                if($roleExists) {
-                    $editGate = '';
-                    $deleteGate = '';
-                }
-                
                 return view('partials.datatablesActions', compact(
                 'viewGate',
                 'editGate',
@@ -91,7 +58,7 @@ class UsersController extends Controller
             $table->editColumn('phone', function ($row) {
                 return $row->phone ? $row->phone : '';
             });
-			
+
             $table->editColumn('approved', function ($row) {
                 return '<input type="checkbox" disabled ' . ($row->approved ? 'checked' : null) . '>';
             });
@@ -120,10 +87,10 @@ class UsersController extends Controller
         }
 
         $kecamatans = Kecamatan::get();
-        $roles      = Role::where('id', '>=', $roleid)->get();
+        $roles      = Role::get();
         $teams      = Team::get();
 
-        return view('admin.users.index', compact('kecamatans', 'roles', 'teams', 'roleid'));
+        return view('admin.users.index', compact('kecamatans', 'roles', 'teams'));
     }
 
     public function create()
@@ -133,15 +100,10 @@ class UsersController extends Controller
         $kecamatans = Kecamatan::pluck('namakecamatan', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $roles = Role::pluck('title', 'id');
-        $index = array_search(['System Admin','1'], $roles->toArray());
-        if($index !== false){
-          unset($roles[$index]);
-        }
-        $roleid = $this->getRoleId();
-        
+
         $teams = Team::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.users.create', compact('kecamatans', 'roles', 'teams', 'roleid'));
+        return view('admin.users.create', compact('kecamatans', 'roles', 'teams'));
     }
 
     public function store(StoreUserRequest $request)
@@ -159,11 +121,7 @@ class UsersController extends Controller
         $kecamatans = Kecamatan::pluck('namakecamatan', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $roles = Role::pluck('title', 'id');
-        $index = array_search(['System Admin','1'], $roles->toArray());
-        if($index !== false){
-          unset($roles[$index]);
-        }
-        
+
         $teams = Team::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $user->load('kecamatan', 'roles', 'team');
@@ -192,20 +150,14 @@ class UsersController extends Controller
     {
         abort_if(Gate::denies('user_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        if($user->id != '1') {
-            $user->delete();
-        }
+        $user->delete();
+
         return back();
     }
 
     public function massDestroy(MassDestroyUserRequest $request)
     {
-        $ids = request('ids');
-        $index = array_search('1', $ids);
-        if($index !== false){
-          unset($ids[$index]);
-        }
-        User::whereIn('id', $ids)->delete();
+        User::whereIn('id', request('ids'))->delete();
 
         return response(null, Response::HTTP_NO_CONTENT);
     }

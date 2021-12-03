@@ -23,10 +23,16 @@ class Team extends Model
     protected $fillable = [
         'created_at',
         'updated_at',
-        'deleted_at',
         'name',
+        'kecamatan_id',
+        'deleted_at',
         'owner_id',
     ];
+
+    public function kecamatan()
+    {
+        return $this->belongsTo(Kecamatan::class, 'kecamatan_id');
+    }
 
     public function owner()
     {

@@ -215,6 +215,8 @@ return [
             'name_helper'       => ' ',
             'owner'             => 'Owner',
             'owner_helper'      => ' ',
+            'kecamatan'         => 'Kecamatan',
+            'kecamatan_helper'  => ' ',
         ],
     ],
     'kecamatan' => [
@@ -231,8 +233,6 @@ return [
             'updated_at_helper'    => ' ',
             'deleted_at'           => 'Deleted at',
             'deleted_at_helper'    => ' ',
-            'team'                 => 'Team',
-            'team_helper'          => ' ',
         ],
     ],
 ];

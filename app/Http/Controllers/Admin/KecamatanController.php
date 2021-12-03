@@ -8,7 +8,6 @@ use App\Http\Requests\MassDestroyKecamatanRequest;
 use App\Http\Requests\StoreKecamatanRequest;
 use App\Http\Requests\UpdateKecamatanRequest;
 use App\Models\Kecamatan;
-use App\Models\Team;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,7 +22,7 @@ class KecamatanController extends Controller
         abort_if(Gate::denies('kecamatan_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = Kecamatan::with(['team'])->select(sprintf('%s.*', (new Kecamatan())->table));
+            $query = Kecamatan::query()->select(sprintf('%s.*', (new Kecamatan())->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -56,9 +55,7 @@ class KecamatanController extends Controller
             return $table->make(true);
         }
 
-        $teams = Team::get();
-
-        return view('admin.kecamatans.index', compact('teams'));
+        return view('admin.kecamatans.index');
     }
 
     public function create()
@@ -79,8 +76,6 @@ class KecamatanController extends Controller
     {
         abort_if(Gate::denies('kecamatan_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $kecamatan->load('team');
-
         return view('admin.kecamatans.edit', compact('kecamatan'));
     }
 
@@ -94,8 +89,6 @@ class KecamatanController extends Controller
     public function show(Kecamatan $kecamatan)
     {
         abort_if(Gate::denies('kecamatan_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-        $kecamatan->load('team');
 
         return view('admin.kecamatans.show', compact('kecamatan'));
     }

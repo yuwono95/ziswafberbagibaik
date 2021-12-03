@@ -21,6 +21,20 @@
                 <span class="help-block">{{ trans('cruds.team.fields.name_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="kecamatan_id">{{ trans('cruds.team.fields.kecamatan') }}</label>
+                <select class="form-control select2 {{ $errors->has('kecamatan') ? 'is-invalid' : '' }}" name="kecamatan_id" id="kecamatan_id">
+                    @foreach($kecamatans as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('kecamatan_id') ? old('kecamatan_id') : $team->kecamatan->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('kecamatan'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('kecamatan') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.team.fields.kecamatan_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>

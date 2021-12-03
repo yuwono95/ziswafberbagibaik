@@ -46,20 +46,6 @@
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">
-                                <i class="fa fa-phone fa-fw"></i>
-                            </span>
-                        </div>
-						<input class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}" type="text" name="phone" value="{{ old('phone', null) }}" required placeholder="{{ trans('cruds.user.fields.phone') }}">
-						@if($errors->has('phone'))
-							<div class="invalid-feedback">
-								{{ $errors->first('phone') }}
-							</div>
-						@endif
-                    </div>
-
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">
                                 <i class="fa fa-lock fa-fw"></i>
                             </span>
                         </div>
@@ -80,24 +66,6 @@
                         <input type="password" name="password_confirmation" class="form-control" required placeholder="{{ trans('global.login_password_confirmation') }}">
                     </div>
 
-                    <div class="input-group mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">
-                                <i class="fa fa-users fa-fw"></i>
-                            </span>
-                        </div>
-						<select class="form-control {{ $errors->has('team') ? 'is-invalid' : '' }}" name="team_id" required placeholder="{{ trans('cruds.user.fields.team') }}">
-							@foreach($teams as $id => $entry)
-								<option value="{{ $id }}" {{ old('team_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
-							@endforeach
-						</select>
-						@if($errors->has('team'))
-							<div class="invalid-feedback">
-								{{ $errors->first('team') }}
-							</div>
-						@endif
-                    </div>
-
                     <button class="btn btn-block btn-primary">
                         {{ trans('global.register') }}
                     </button>
@@ -108,4 +76,5 @@
 
     </div>
 </div>
+
 @endsection
