@@ -19,88 +19,160 @@
     </div>
 
     <div class="card-body">
-        <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-User">
-            <thead>
-                <tr>
-                    <th width="10">
+        <div class="table-responsive">
+            <table class=" table table-bordered table-striped table-hover datatable datatable-User">
+                <thead>
+                    <tr>
+                        <th width="10">
 
-                    </th>
-                    <th>
-                        {{ trans('cruds.user.fields.id') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.user.fields.name') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.user.fields.email') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.user.fields.phone') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.user.fields.email_verified_at') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.user.fields.approved') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.user.fields.verified') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.user.fields.team_admin') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.user.fields.kecamatan') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.user.fields.roles') }}
-                    </th>
-                    <th>
-                        &nbsp;
-                    </th>
-                </tr>
-                <tr>
-                    <td>
-                    </td>
-                    <td>
-                        <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                    </td>
-                    <td>
-                        <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                    </td>
-                    <td>
-                        <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                    </td>
-                    <td>
-                        <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                    </td>
-                    <td>
-                    </td>
-                    <td>
-                    </td>
-                    <td>
-                    </td>
-                    <td>
-                        <select class="search">
-                            <option value>{{ trans('global.all') }}</option>
-                            @foreach($kecamatans as $key => $item)
-                                <option value="{{ $item->namakecamatan }}">{{ $item->namakecamatan }}</option>
-                            @endforeach
-                        </select>
-                    </td>
-                    <td>
-                        <select class="search">
-                            <option value>{{ trans('global.all') }}</option>
-                            @foreach($roles as $key => $item)
-                                <option value="{{ $item->title }}">{{ $item->title }}</option>
-                            @endforeach
-                        </select>
-                    </td>
-                    <td>
-                    </td>
-                </tr>
-            </thead>
-        </table>
+                        </th>
+                        <th>
+                            {{ trans('cruds.user.fields.id') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.user.fields.name') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.user.fields.email') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.user.fields.phone') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.user.fields.email_verified_at') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.user.fields.approved') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.user.fields.verified') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.user.fields.team_admin') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.user.fields.kecamatan') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.user.fields.roles') }}
+                        </th>
+                        <th>
+                            &nbsp;
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                            <select class="search">
+                                <option value>{{ trans('global.all') }}</option>
+                                @foreach($kecamatans as $key => $item)
+                                    <option value="{{ $item->namakecamatan }}">{{ $item->namakecamatan }}</option>
+                                @endforeach
+                            </select>
+                        </td>
+                        <td>
+                            <select class="search">
+                                <option value>{{ trans('global.all') }}</option>
+                                @foreach($roles as $key => $item)
+                                    <option value="{{ $item->title }}">{{ $item->title }}</option>
+                                @endforeach
+                            </select>
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($users as $key => $user)
+                        <tr data-entry-id="{{ $user->id }}">
+                            <td>
+
+                            </td>
+                            <td>
+                                {{ $user->id ?? '' }}
+                            </td>
+                            <td>
+                                {{ $user->name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $user->email ?? '' }}
+                            </td>
+                            <td>
+                                {{ $user->phone ?? '' }}
+                            </td>
+                            <td>
+                                {{ $user->email_verified_at ?? '' }}
+                            </td>
+                            <td>
+                                <span style="display:none">{{ $user->approved ?? '' }}</span>
+                                <input type="checkbox" disabled="disabled" {{ $user->approved ? 'checked' : '' }}>
+                            </td>
+                            <td>
+                                <span style="display:none">{{ $user->verified ?? '' }}</span>
+                                <input type="checkbox" disabled="disabled" {{ $user->verified ? 'checked' : '' }}>
+                            </td>
+                            <td>
+                                <span style="display:none">{{ $user->team_admin ?? '' }}</span>
+                                <input type="checkbox" disabled="disabled" {{ $user->team_admin ? 'checked' : '' }}>
+                            </td>
+                            <td>
+                                {{ $user->kecamatan->namakecamatan ?? '' }}
+                            </td>
+                            <td>
+                                @foreach($user->roles as $key => $item)
+                                    <span class="badge badge-info">{{ $item->title }}</span>
+                                @endforeach
+                            </td>
+                            <td>
+                                @can('user_show')
+                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.users.show', $user->id) }}">
+                                        {{ trans('global.view') }}
+                                    </a>
+                                @endcan
+
+                                @can('user_edit')
+                                    <a class="btn btn-xs btn-info" href="{{ route('admin.users.edit', $user->id) }}">
+                                        {{ trans('global.edit') }}
+                                    </a>
+                                @endcan
+
+                                @can('user_delete')
+                                    <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
+                                    </form>
+                                @endcan
+
+                            </td>
+
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 
@@ -113,24 +185,14 @@
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
 @can('user_delete')
-  let deleteButtonTrans = '{{ trans('global.datatables.delete') }}';
+  let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
   let deleteButton = {
     text: deleteButtonTrans,
     url: "{{ route('admin.users.massDestroy') }}",
     className: 'btn-danger',
     action: function (e, dt, node, config) {
-	  const roles = [];
-	  @foreach($roles as $key => $item)
-	  roles.push("{{ $item->title }}")
-	  @endforeach
-      var ids = $.map(dt.rows({ selected: true }).data(), function (entry) {
-        let tmp = document.createElement("DIV")
-        tmp.innerHTML = entry.roles
-        var rolename = tmp.textContent || tmp.innerText || ""
-		if(roles.indexOf(rolename) + 1 > {{ $roleid }}) {
-			return entry.id	
-		}
-		return 0
+      var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
+          return $(entry).data('entry-id')
       });
 
       if (ids.length === 0) {
@@ -152,32 +214,12 @@
   dtButtons.push(deleteButton)
 @endcan
 
-  let dtOverrideGlobals = {
-    buttons: dtButtons,
-    processing: true,
-    serverSide: true,
-    retrieve: true,
-    aaSorting: [],
-    ajax: "{{ route('admin.users.index') }}",
-    columns: [
-      { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
-{ data: 'name', name: 'name' },
-{ data: 'email', name: 'email' },
-{ data: 'phone', name: 'phone' },
-{ data: 'email_verified_at', name: 'email_verified_at' },
-{ data: 'approved', name: 'approved' },
-{ data: 'verified', name: 'verified' },
-{ data: 'team_admin', name: 'team_admin' },
-{ data: 'kecamatan_namakecamatan', name: 'kecamatan.namakecamatan' },
-{ data: 'roles', name: 'roles.title' },
-{ data: 'actions', name: '{{ trans('global.actions') }}' }
-    ],
+  $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
     order: [[ 1, 'desc' ]],
     pageLength: 100,
-  };
-  let table = $('.datatable-User').DataTable(dtOverrideGlobals);
+  });
+  let table = $('.datatable-User:not(.ajaxTable)').DataTable({ buttons: dtButtons })
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
@@ -204,6 +246,7 @@ table.on('column-visibility.dt', function(e, settings, column, state) {
           visibleColumnsIndexes.push(colIdx);
       });
   })
-});
+})
+
 </script>
 @endsection

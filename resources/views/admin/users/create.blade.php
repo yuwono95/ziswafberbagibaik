@@ -97,9 +97,7 @@
                 </div>
                 <select class="form-control select2 {{ $errors->has('roles') ? 'is-invalid' : '' }}" name="roles[]" id="roles" multiple required>
                     @foreach($roles as $id => $role)
-                        @if($id > $roleid)
                         <option value="{{ $id }}" {{ in_array($id, old('roles', [])) ? 'selected' : '' }}>{{ $role }}</option>
-                        @endif
                     @endforeach
                 </select>
                 @if($errors->has('roles'))
@@ -131,4 +129,7 @@
         </form>
     </div>
 </div>
+
+
+
 @endsection
