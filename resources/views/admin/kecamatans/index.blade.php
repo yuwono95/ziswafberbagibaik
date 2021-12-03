@@ -1,54 +1,35 @@
 @extends('layouts.admin')
 @section('content')
-<div class="card">
-    <div class="card-body">
-        <form action="{{ route('admin.team-members.invite') }}" method="POST">
-            @csrf
-            <div class="row">
-                <div class="col-auto">
-                    <input class="form-control" type="text" name="email" id="email" placeholder="Email">
-                </div>
-                <div class="col p-0">
-                    <button class="btn btn-success" type="submit">
-                        Invite
-                    </button>
-                </div>
-            </div>
-        </form>
+@can('kecamatan_create')
+    <div style="margin-bottom: 10px;" class="row">
+        <div class="col-lg-12">
+            <a class="btn btn-success" href="{{ route('admin.kecamatans.create') }}">
+                {{ trans('global.add') }} {{ trans('cruds.kecamatan.title_singular') }}
+            </a>
+            <button class="btn btn-warning" data-toggle="modal" data-target="#csvImportModal">
+                {{ trans('global.app_csvImport') }}
+            </button>
+            @include('csvImport.modal', ['model' => 'Kecamatan', 'route' => 'admin.kecamatans.parseCsvImport'])
+        </div>
     </div>
-</div>
+@endcan
 <div class="card">
     <div class="card-header">
-        {{ trans('cruds.user.title_singular') }} {{ trans('global.list') }}
+        {{ trans('cruds.kecamatan.title_singular') }} {{ trans('global.list') }}
     </div>
 
     <div class="card-body">
-        <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-User">
+        <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-Kecamatan">
             <thead>
                 <tr>
                     <th width="10">
 
                     </th>
                     <th>
-                        {{ trans('cruds.user.fields.id') }}
+                        {{ trans('cruds.kecamatan.fields.id') }}
                     </th>
                     <th>
-                        {{ trans('cruds.user.fields.name') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.user.fields.email') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.user.fields.email_verified_at') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.user.fields.approved') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.user.fields.verified') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.user.fields.roles') }}
+                        {{ trans('cruds.kecamatan.fields.namakecamatan') }}
                     </th>
                     <th>
                         &nbsp;
@@ -62,24 +43,6 @@
                     </td>
                     <td>
                         <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                    </td>
-                    <td>
-                        <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                    </td>
-                    <td>
-                        <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                    </td>
-                    <td>
-                    </td>
-                    <td>
-                    </td>
-                    <td>
-                        <select class="search">
-                            <option value>{{ trans('global.all') }}</option>
-                            @foreach($roles as $key => $item)
-                                <option value="{{ $item->title }}">{{ $item->title }}</option>
-                            @endforeach
-                        </select>
                     </td>
                     <td>
                     </td>
@@ -97,11 +60,11 @@
 <script>
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-@can('user_delete')
+@can('kecamatan_delete')
   let deleteButtonTrans = '{{ trans('global.datatables.delete') }}';
   let deleteButton = {
     text: deleteButtonTrans,
-    url: "{{ route('admin.users.massDestroy') }}",
+    url: "{{ route('admin.kecamatans.massDestroy') }}",
     className: 'btn-danger',
     action: function (e, dt, node, config) {
       var ids = $.map(dt.rows({ selected: true }).data(), function (entry) {
@@ -133,23 +96,18 @@
     serverSide: true,
     retrieve: true,
     aaSorting: [],
-    ajax: "{{ route('admin.users.index') }}",
+    ajax: "{{ route('admin.kecamatans.index') }}",
     columns: [
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
-{ data: 'name', name: 'name' },
-{ data: 'email', name: 'email' },
-{ data: 'email_verified_at', name: 'email_verified_at' },
-{ data: 'approved', name: 'approved' },
-{ data: 'verified', name: 'verified' },
-{ data: 'roles', name: 'roles.title' },
+{ data: 'namakecamatan', name: 'namakecamatan' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,
     order: [[ 1, 'desc' ]],
     pageLength: 100,
   };
-  let table = $('.datatable-User').DataTable(dtOverrideGlobals);
+  let table = $('.datatable-Kecamatan').DataTable(dtOverrideGlobals);
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
