@@ -97,6 +97,14 @@
                             @endforeach
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.user.fields.team') }}
+                        </th>
+                        <td>
+                            {{ $user->team ? $user->team->name : '' }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">
@@ -125,5 +133,4 @@
         </div>
     </div>
 </div>
-
 @endsection
