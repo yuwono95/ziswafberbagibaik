@@ -40,9 +40,11 @@
                     <th>
                         {{ trans('cruds.user.fields.team_admin') }}
                     </th>
+					@if($roleid < 3)
                     <th>
                         {{ trans('cruds.user.fields.kecamatan') }}
                     </th>
+					@endif
                     <th>
                         {{ trans('cruds.user.fields.roles') }}
                     </th>
@@ -66,6 +68,7 @@
                     </td>
                     <td>
                     </td>
+					@if($roleid < 3)
                     <td>
                         <select class="search">
                             <option value>{{ trans('global.all') }}</option>
@@ -74,6 +77,7 @@
                             @endforeach
                         </select>
                     </td>
+					@endif
                     <td>
                         <select class="search">
                             <option value>{{ trans('global.all') }}</option>
