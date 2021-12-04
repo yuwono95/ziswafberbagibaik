@@ -143,8 +143,10 @@ class InputPerolehanController extends Controller
         $verifiedstatuses = VerifiedStatus::pluck('status', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $inputPerolehan->load('namabank', 'verifiedstatus', 'team');
+		
+		$roleid = MultiTenantModelTrait::getRoleId();
 
-        return view('admin.inputPerolehans.edit', compact('namabanks', 'verifiedstatuses', 'inputPerolehan'));
+        return view('admin.inputPerolehans.edit', compact('namabanks', 'verifiedstatuses', 'inputPerolehan', 'roleid'));
     }
 
     public function update(UpdateInputPerolehanRequest $request, InputPerolehan $inputPerolehan)
