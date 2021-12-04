@@ -86,8 +86,27 @@
                                 <i class="fa fa-users fa-fw"></i>
                             </span>
                         </div>
+						<select class="form-control {{ $errors->has('kecamatan') ? 'is-invalid' : '' }}" name="kecamatan_id" required placeholder="{{ trans('cruds.user.fields.kecamatan') }}">
+							<option value="" {{ old('kecamatan_id') == "" ? 'selected' : '' }}>Kecamatan</option>
+							@foreach($kecamatans as $id => $kecamatan)
+								<option value="{{ $id }}" {{ old('kecamatan_id') == $id ? 'selected' : '' }}>{{ $kecamatan->name }}</option>
+							@endforeach
+						</select>
+						@if($errors->has('kecamatan'))
+							<div class="invalid-feedback">
+								{{ $errors->first('kecamatan') }}
+							</div>
+						@endif
+                    </div>
+					
+                    <div class="input-group mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-users fa-fw"></i>
+                            </span>
+                        </div>
 						<select class="form-control {{ $errors->has('team') ? 'is-invalid' : '' }}" name="team_id" required placeholder="{{ trans('cruds.user.fields.team') }}">
-							<option value="" {{ old('team_id') == $id ? 'selected' : '' }}>Select team / group</option>
+							<option value="" {{ old('team_id') == "" ? 'selected' : '' }}>Team (group)</option>
 							@foreach($teams as $id => $team)
 								<option value="{{ $id }}" {{ old('team_id') == $id ? 'selected' : '' }}>{{ $team->name }}</option>
 							@endforeach
