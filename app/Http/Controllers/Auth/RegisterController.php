@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Kecamatan;
 use App\Models\Team;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -46,9 +47,10 @@ class RegisterController extends Controller
             return redirect()->route('register');
         }
 
+		$kecamatans = Kecamatan::get();
 		$teams = Team::get();
 		
-        return view('auth.register', compact('teams'));
+        return view('auth.register', compact('kecamatans', 'teams'));
     }
 
     /**
