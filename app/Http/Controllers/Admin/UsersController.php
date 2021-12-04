@@ -19,21 +19,6 @@ use Yajra\DataTables\Facades\DataTables;
 class UsersController extends Controller
 {
     use CsvImportTrait;
-
-    private function getRoleId() {
-        $isSysAdmin = auth()->user()->roles->contains(1);
-        $isAdminDPD = auth()->user()->roles->contains(2);
-        $isAdminDPC = auth()->user()->roles->contains(3);
-        $roleid = 4;
-        if($isSysAdmin) {
-            $roleid = 1;
-        } elseif($isAdminDPD) {
-            $roleid = 2;
-        } elseif($isAdminDPC) {
-            $roleid = 3;
-        }
-        return $roleid;
-    }
     
     public function index(Request $request)
     {
@@ -51,7 +36,7 @@ class UsersController extends Controller
             $table->addColumn('actions', '&nbsp;');
 
             $table->editColumn('actions', function ($row) {
-                $roleid = $this->getRoleId();
+                $roleid = \App\Traits\MultiTenantModelTrait::getRoleId();
                 $viewGate = 'user_show';
                 $editGate = 'user_edit';
                 $deleteGate = 'user_delete';
