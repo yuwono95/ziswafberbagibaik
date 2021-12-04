@@ -87,6 +87,7 @@
                             </span>
                         </div>
 						<select class="form-control {{ $errors->has('team') ? 'is-invalid' : '' }}" name="team_id" required placeholder="{{ trans('cruds.user.fields.team') }}">
+							<option value="" {{ old('team_id') == $id ? 'selected' : '' }}>Select team / group</option>
 							@foreach($teams as $id => $team)
 								<option value="{{ $id }}" {{ old('team_id') == $id ? 'selected' : '' }}>{{ $team->name }}</option>
 							@endforeach
