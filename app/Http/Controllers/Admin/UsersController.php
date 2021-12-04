@@ -123,6 +123,8 @@ class UsersController extends Controller
           unset($roles[$index]);
         }
 		
+		$teams = null;
+		$roleid = MultiTenantModelTrait::getRoleId();
 		if($roleid < 3) {
 			$teams = Team::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 		} else {
@@ -154,6 +156,7 @@ class UsersController extends Controller
         }
         
 		$teams = null;
+		$roleid = MultiTenantModelTrait::getRoleId();
 		if($roleid < 3) {
 			$teams = Team::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 		} else {
