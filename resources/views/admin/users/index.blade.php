@@ -37,9 +37,11 @@
                     <th>
                         {{ trans('cruds.user.fields.approved') }}
                     </th>
+					<!--
                     <th>
                         {{ trans('cruds.user.fields.team_admin') }}
                     </th>
+					-->
 					@if($roleid < 3)
                     <th>
                         {{ trans('cruds.user.fields.kecamatan') }}
@@ -66,8 +68,10 @@
                     </td>
                     <td>
                     </td>
+					<!--
                     <td>
                     </td>
+					-->
 					@if($roleid < 3)
                     <td>
                         <select class="search">
