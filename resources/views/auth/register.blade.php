@@ -87,9 +87,9 @@
                             </span>
                         </div>
 						<select class="form-control {{ $errors->has('kecamatan') ? 'is-invalid' : '' }}" name="kecamatan_id" required placeholder="{{ trans('cruds.user.fields.kecamatan') }}">
-							<option value="" {{ old('kecamatan_id') == "" ? 'selected' : '' }}>Kecamatan</option>
+							<option value="" selected>Select Kecamatan</option>
 							@foreach($kecamatans as $id => $kecamatan)
-								<option value="{{ $id }}" {{ old('kecamatan_id') == $id ? 'selected' : '' }}>{{ $kecamatan->name }}</option>
+								<option value="{{ $id }}" {{ old('kecamatan_id') == $id ? 'selected' : '' }}>{{ $kecamatan->namakecamatan }}</option>
 							@endforeach
 						</select>
 						@if($errors->has('kecamatan'))
@@ -106,7 +106,7 @@
                             </span>
                         </div>
 						<select class="form-control {{ $errors->has('team') ? 'is-invalid' : '' }}" name="team_id" required placeholder="{{ trans('cruds.user.fields.team') }}">
-							<option value="" {{ old('team_id') == "" ? 'selected' : '' }}>Team (group)</option>
+							<option value="" selected>Select Team (Group)</option>
 							@foreach($teams as $id => $team)
 								<option value="{{ $id }}" {{ old('team_id') == $id ? 'selected' : '' }}>{{ $team->name }}</option>
 							@endforeach
