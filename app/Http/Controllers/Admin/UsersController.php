@@ -122,7 +122,7 @@ class UsersController extends Controller
         if($index !== false){
           unset($roles[$index]);
         }
-        $roleid = $this->getRoleId();
+        $roleid = \App\Traits\MultiTenantModelTrait::getRoleId();
         
         $teams = Team::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
