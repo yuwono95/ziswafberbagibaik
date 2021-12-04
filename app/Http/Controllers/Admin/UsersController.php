@@ -27,7 +27,10 @@ class UsersController extends Controller
         $roleid = \App\Traits\MultiTenantModelTrait::getRoleId();
         if ($request->ajax()) {
             $query = User::with(['kecamatan', 'roles', 'team'])->select(sprintf('%s.*', (new User())->table));
-            if($roleid > 2) {
+			if($roleid == 2) {
+				$query = $query->join('role_user','users.id','=','role_user.user_id')->where('role_user.role_id', '>', 1)
+			}
+            elseif($roleid > 2) {
                 $query = $query->join('role_user','users.id','=','role_user.user_id')->where('role_user.role_id', '>=', $roleid)->where('users.kecamatan_id', '=', auth()->user()->kecamatan_id);
             }
             $table = Datatables::of($query);
