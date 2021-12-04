@@ -27,7 +27,7 @@ class UsersController extends Controller
         $roleid = \App\Traits\MultiTenantModelTrait::getRoleId();
         if ($request->ajax()) {
             $query = User::with(['kecamatan', 'roles', 'team'])->select(sprintf('%s.*', (new User())->table));
-            if($roleid > 2) {
+            if($roleid > 1) {
                 $query = $query->join('role_user','users.id','=','role_user.user_id')->where('role_user.role_id', '>=', $roleid)->where('users.kecamatan_id', '=', auth()->user()->kecamatan_id);
             }
             $table = Datatables::of($query);
@@ -150,10 +150,10 @@ class UsersController extends Controller
         }
         
         $teams = Team::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
         $user->load('kecamatan', 'roles', 'team');
+		$roleid = \App\Traits\MultiTenantModelTrait::getRoleId();
 
-        return view('admin.users.edit', compact('kecamatans', 'roles', 'teams', 'user'));
+        return view('admin.users.edit', compact('kecamatans', 'roles', 'teams', 'user', 'roleid'));
     }
 
     public function update(UpdateUserRequest $request, User $user)
