@@ -71,6 +71,7 @@
                             <input type="checkbox" disabled="disabled" {{ $user->verified ? 'checked' : '' }}>
                         </td>
                     </tr>
+					<!--
                     <tr>
                         <th>
                             {{ trans('cruds.user.fields.team_admin') }}
@@ -79,6 +80,7 @@
                             <input type="checkbox" disabled="disabled" {{ $user->team_admin ? 'checked' : '' }}>
                         </td>
                     </tr>
+					-->
                     <tr>
                         <th>
                             {{ trans('cruds.user.fields.kecamatan') }}
