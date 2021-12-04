@@ -122,9 +122,13 @@ class UsersController extends Controller
         if($index !== false){
           unset($roles[$index]);
         }
-        $roleid = \App\Traits\MultiTenantModelTrait::getRoleId();
-        
-        $teams = Team::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+		
+		if($roleid < 3) {
+			$teams = Team::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+		} else {
+			$teams = Team::where('kecamatan_id', '=', auth()->user()->kecamatan_id)->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+		}
+		$roleid = \App\Traits\MultiTenantModelTrait::getRoleId();
 
         return view('admin.users.create', compact('kecamatans', 'roles', 'teams', 'roleid'));
     }
@@ -149,7 +153,12 @@ class UsersController extends Controller
           unset($roles[$index]);
         }
         
-        $teams = Team::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+		$teams = null;
+		if($roleid < 3) {
+			$teams = Team::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+		} else {
+			$teams = Team::where('kecamatan_id', '=', auth()->user()->kecamatan_id)->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');			
+		}
         $user->load('kecamatan', 'roles', 'team');
 		$roleid = \App\Traits\MultiTenantModelTrait::getRoleId();
 
