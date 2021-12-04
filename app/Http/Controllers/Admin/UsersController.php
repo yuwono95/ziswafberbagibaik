@@ -24,7 +24,7 @@ class UsersController extends Controller
     {
         abort_if(Gate::denies('user_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $roleid = $this->getRoleId();
+        $roleid = \App\Traits\MultiTenantModelTrait::getRoleId();
         if ($request->ajax()) {
             $query = User::with(['kecamatan', 'roles', 'team'])->select(sprintf('%s.*', (new User())->table));
             if($roleid > 1) {
