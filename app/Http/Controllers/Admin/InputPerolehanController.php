@@ -144,7 +144,7 @@ class InputPerolehanController extends Controller
 
         $inputPerolehan->load('namabank', 'verifiedstatus', 'team');
 		
-		$roleid = \\App\Traits\MultiTenantModelTrait::getRoleId();
+		$roleid = \App\Traits\MultiTenantModelTrait::getRoleId();
 
         return view('admin.inputPerolehans.edit', compact('namabanks', 'verifiedstatuses', 'inputPerolehan', 'roleid'));
     }
