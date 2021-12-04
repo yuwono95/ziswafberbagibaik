@@ -159,8 +159,9 @@
 { data: 'email', name: 'email' },
 { data: 'phone', name: 'phone' },
 { data: 'approved', name: 'approved' },
-{ data: 'team_admin', name: 'team_admin' },
+@if($roleid < 3)
 { data: 'kecamatan_namakecamatan', name: 'kecamatan.namakecamatan' },
+@endif
 { data: 'roles', name: 'roles.title' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
