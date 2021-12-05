@@ -92,7 +92,9 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.user.fields.kecamatan_helper') }}</span>
             </div>
-			@endif
+            @elseif($roleid == 3)
+                 <input type="hidden" id="kecamatan_id" name="kecamatan_id" value="{{ $user->kecamatan_id }}">
+            @endif
             <div class="form-group">
                 <label class="required" for="roles">{{ trans('cruds.user.fields.roles') }}</label>
                 <div style="padding-bottom: 4px">
