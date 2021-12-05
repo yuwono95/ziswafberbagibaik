@@ -128,13 +128,14 @@ class UsersController extends Controller
 		
 		$teams = null;
 		$roleid = \App\Traits\MultiTenantModelTrait::getRoleId();
+        $kecamatanid = auth()->user()->kecamatan_id;
 		if($roleid < 3) {
 			$teams = Team::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 		} else {
 			$teams = Team::where('kecamatan_id', '=', auth()->user()->kecamatan_id)->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 		}
 
-        return view('admin.users.create', compact('kecamatans', 'roles', 'teams', 'roleid'));
+        return view('admin.users.create', compact('kecamatans', 'roles', 'teams', 'roleid', 'kecamatanid'));
     }
 
     public function store(StoreUserRequest $request)
