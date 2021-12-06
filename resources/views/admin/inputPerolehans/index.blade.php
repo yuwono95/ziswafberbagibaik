@@ -59,6 +59,12 @@
                         Total
                     </th>
                     <th>
+                        {{ trans('cruds.inputPerolehan.fields.user') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.inputPerolehan.fields.team') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.inputPerolehan.fields.namabank') }}
                     </th>
                     <th>
@@ -101,6 +107,11 @@
                     <td>
                         <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                     </td>
+                    <td>
+                        <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                    </td>
+					<td>
+					</td>
                     <td>
                         <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                     </td>
@@ -190,7 +201,9 @@
 { data: 'wakafproduktif', name: 'wakafproduktif' },
 { data: 'infaqkesehatan', name: 'infaqkesehatan' },
 { data: 'total', name: 'total' },
-{ data: 'namabank_namabank', name: 'namabank.namabank' },
+{ data: 'namauser', name: 'user' },
+{ data: 'namateam', name: 'team' },
+{ data: 'namabank', name: 'namabank.namabank' },
 { data: 'buktitransfer', name: 'buktitransfer', sortable: false, searchable: false },
 { data: 'verifiedstatus_status', name: 'verifiedstatus.status' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
