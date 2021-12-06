@@ -44,7 +44,7 @@
                             {{ trans('cruds.inputPerolehan.fields.zakatprofesi') }}
                         </th>
                         <td>
-                            {{ $inputPerolehan->zakatprofesi }}
+                            {{ number_format($inputPerolehan->zakatprofesi,0,",",".") }}
                         </td>
                     </tr>
                     <tr>
@@ -52,7 +52,7 @@
                             {{ trans('cruds.inputPerolehan.fields.zakatmaal') }}
                         </th>
                         <td>
-                            {{ $inputPerolehan->zakatmaal }}
+                            {{ number_format($inputPerolehan->zakatmaal,0,",",".") }}
                         </td>
                     </tr>
                     <tr>
@@ -60,7 +60,7 @@
                             {{ trans('cruds.inputPerolehan.fields.infaq') }}
                         </th>
                         <td>
-                            {{ $inputPerolehan->infaq }}
+                            {{ number_format($inputPerolehan->infaq,0,",",".") }}
                         </td>
                     </tr>
                     <tr>
@@ -68,7 +68,7 @@
                             {{ trans('cruds.inputPerolehan.fields.sedekah') }}
                         </th>
                         <td>
-                            {{ $inputPerolehan->sedekah }}
+                            {{ number_format($inputPerolehan->sedekah,0,",",".") }}
                         </td>
                     </tr>
                     <tr>
@@ -76,7 +76,7 @@
                             {{ trans('cruds.inputPerolehan.fields.wakafpendidikan') }}
                         </th>
                         <td>
-                            {{ $inputPerolehan->wakafpendidikan }}
+                            {{ number_format($inputPerolehan->wakafpendidikan,0,",",".") }}
                         </td>
                     </tr>
                     <tr>
@@ -84,7 +84,7 @@
                             {{ trans('cruds.inputPerolehan.fields.wakafproduktif') }}
                         </th>
                         <td>
-                            {{ $inputPerolehan->wakafproduktif }}
+                            {{ number_format($inputPerolehan->wakafproduktif,0,",",".") }}
                         </td>
                     </tr>
                     <tr>
@@ -92,7 +92,7 @@
                             {{ trans('cruds.inputPerolehan.fields.infaqkesehatan') }}
                         </th>
                         <td>
-                            {{ $inputPerolehan->infaqkesehatan }}
+                            {{ number_format($inputPerolehan->infaqkesehatan,0,",",".") }}
                         </td>
                     </tr>
                     <tr>
@@ -133,7 +133,4 @@
         </div>
     </div>
 </div>
-
-
-
 @endsection
