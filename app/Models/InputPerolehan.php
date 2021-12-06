@@ -58,12 +58,12 @@ class InputPerolehan extends Model implements HasMedia
         $this->addMediaConversion('preview')->fit('crop', 120, 120);
     }
 
-	public function user()
+	public function namauser()
 	{
 		return $this->belongsTo(User::class, 'user_id');
 	}
 	
-	public function team()
+	public function namateam()
 	{
 		return $this->belongsTo(Team::class, 'team_id');
 	}
