@@ -79,6 +79,10 @@ class InputPerolehanController extends Controller
             $table->editColumn('infaqkesehatan', function ($row) {
                 return $row->infaqkesehatan ? number_format($row->infaqkesehatan,0,",",".") : '';
             });
+            $table->addColumn('total', function ($row) {
+				$total = $row->zakatprofesi + $row->zakatmaal + $row->infaq + $row->sedekah + $row->wakafpendidikan + $row->wakafproduktif + $row->infaqkesehatan;
+                return $total ? number_format($total,0,",",".") : '';
+            });
             $table->addColumn('namabank_namabank', function ($row) {
                 return $row->namabank ? $row->namabank->namabank : '';
             });
