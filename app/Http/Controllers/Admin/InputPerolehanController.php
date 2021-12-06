@@ -59,25 +59,25 @@ class InputPerolehanController extends Controller
                 return $row->nomorhp ? $row->nomorhp : '';
             });
             $table->editColumn('zakatprofesi', function ($row) {
-                return $row->zakatprofesi ? $row->zakatprofesi : '';
+                return $row->zakatprofesi ? number_format($row->zakatprofesi,0,",",".") : '';
             });
             $table->editColumn('zakatmaal', function ($row) {
-                return $row->zakatmaal ? $row->zakatmaal : '';
+                return $row->zakatmaal ? number_format($row->zakatmaal,0,",",".") : '';
             });
             $table->editColumn('infaq', function ($row) {
-                return $row->infaq ? $row->infaq : '';
+                return $row->infaq ? number_format($row->infaq,0,",",".") : '';
             });
             $table->editColumn('sedekah', function ($row) {
-                return $row->sedekah ? $row->sedekah : '';
+                return $row->sedekah ? number_format($row->sedekah,0,",",".") : '';
             });
             $table->editColumn('wakafpendidikan', function ($row) {
-                return $row->wakafpendidikan ? $row->wakafpendidikan : '';
+                return $row->wakafpendidikan ? number_format($row->wakafpendidikan,0,",",".") : '';
             });
             $table->editColumn('wakafproduktif', function ($row) {
-                return $row->wakafproduktif ? $row->wakafproduktif : '';
+                return $row->wakafproduktif ? number_format($row->wakafproduktif,0,",",".") : '';
             });
             $table->editColumn('infaqkesehatan', function ($row) {
-                return $row->infaqkesehatan ? $row->infaqkesehatan : '';
+                return $row->infaqkesehatan ? number_format($row->infaqkesehatan,0,",",".") : '';
             });
             $table->addColumn('namabank_namabank', function ($row) {
                 return $row->namabank ? $row->namabank->namabank : '';
