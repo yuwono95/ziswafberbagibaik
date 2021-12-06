@@ -19,6 +19,7 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.team.fields.name_helper') }}</span>
             </div>
+			@if($roleid < 3)
             <div class="form-group">
                 <label for="kecamatan_id">{{ trans('cruds.team.fields.kecamatan') }}</label>
                 <select class="form-control select2 {{ $errors->has('kecamatan') ? 'is-invalid' : '' }}" name="kecamatan_id" id="kecamatan_id">
@@ -33,6 +34,9 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.team.fields.kecamatan_helper') }}</span>
             </div>
+			@elseif($roleid == 3)
+				<input type="hidden" id="kecamatan_id" name="kecamatan_id" value="{{ $kecamatanid }}">
+			@endif
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
@@ -41,7 +45,4 @@
         </form>
     </div>
 </div>
-
-
-
 @endsection
