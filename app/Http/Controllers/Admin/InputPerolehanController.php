@@ -28,7 +28,7 @@ class InputPerolehanController extends Controller
         abort_if(Gate::denies('input_perolehan_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = InputPerolehan::with(['namabank', 'verifiedstatus', 'team'])->select(sprintf('%s.*', (new InputPerolehan())->table));
+            $query = InputPerolehan::with(['namauser', 'namateam', 'namabank', 'verifiedstatus', 'team'])->select(sprintf('%s.*', (new InputPerolehan())->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -83,7 +83,13 @@ class InputPerolehanController extends Controller
 				$total = $row->zakatprofesi + $row->zakatmaal + $row->infaq + $row->sedekah + $row->wakafpendidikan + $row->wakafproduktif + $row->infaqkesehatan;
                 return $total ? number_format($total,0,",",".") : '';
             });
-            $table->addColumn('namabank_namabank', function ($row) {
+            $table->editColumn('namauser', function ($row) {
+                return $row->namauser ? $row->namauser : '';
+            });
+            $table->editColumn('namateam', function ($row) {
+                return $row->namateam ? $row->namateam : '';
+            });
+            $table->addColumn('namabank', function ($row) {
                 return $row->namabank ? $row->namabank->namabank : '';
             });
 
