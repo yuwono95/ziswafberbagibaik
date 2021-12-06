@@ -59,7 +59,7 @@
                         Total
                     </th>
                     <th>
-                        {{ trans('cruds.inputPerolehan.fields.user') }}
+                        {{ trans('cruds.userAlert.fields.user') }}
                     </th>
                     <th>
                         {{ trans('cruds.inputPerolehan.fields.team') }}
@@ -201,8 +201,8 @@
 { data: 'wakafproduktif', name: 'wakafproduktif' },
 { data: 'infaqkesehatan', name: 'infaqkesehatan' },
 { data: 'total', name: 'total' },
-{ data: 'namauser', name: 'user' },
-{ data: 'namateam', name: 'team' },
+{ data: 'namauser', name: 'namauser.name' },
+{ data: 'namateam', name: 'namateam.name' },
 { data: 'namabank', name: 'namabank.namabank' },
 { data: 'buktitransfer', name: 'buktitransfer', sortable: false, searchable: false },
 { data: 'verifiedstatus_status', name: 'verifiedstatus.status' },
