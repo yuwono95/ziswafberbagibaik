@@ -56,6 +56,9 @@
                         {{ trans('cruds.inputPerolehan.fields.infaqkesehatan') }}
                     </th>
                     <th>
+                        Total
+                    </th>
+                    <th>
                         {{ trans('cruds.inputPerolehan.fields.namabank') }}
                     </th>
                     <th>
@@ -101,6 +104,8 @@
                     <td>
                         <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                     </td>
+					<td>
+					</td>
                     <td>
                         <select class="search">
                             <option value>{{ trans('global.all') }}</option>
@@ -184,6 +189,7 @@
 { data: 'wakafpendidikan', name: 'wakafpendidikan' },
 { data: 'wakafproduktif', name: 'wakafproduktif' },
 { data: 'infaqkesehatan', name: 'infaqkesehatan' },
+{ data: 'total', name: 'total' },
 { data: 'namabank_namabank', name: 'namabank.namabank' },
 { data: 'buktitransfer', name: 'buktitransfer', sortable: false, searchable: false },
 { data: 'verifiedstatus_status', name: 'verifiedstatus.status' },
