@@ -40,6 +40,7 @@
                 </thead>
                 <tbody>
                     @foreach($teams as $key => $team)
+						@if($roleid > 2 && $team->kecamatan_id == $kecamatanid)
                         <tr data-entry-id="{{ $team->id }}">
                             <td>
 
@@ -79,6 +80,7 @@
                             </td>
 
                         </tr>
+						@endif
                     @endforeach
                 </tbody>
             </table>
