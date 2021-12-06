@@ -37,6 +37,9 @@
                     <th>
                         {{ trans('cruds.user.fields.approved') }}
                     </th>
+                    <th>
+                        {{ trans('cruds.inputPerolehan.fields.team') }}
+                    </th>
 					<!--
                     <th>
                         {{ trans('cruds.user.fields.team_admin') }}
@@ -67,6 +70,9 @@
                         <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                     </td>
                     <td>
+                    </td>
+	                <td>
+                        <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                     </td>
 					<!--
                     <td>
@@ -159,6 +165,7 @@
 { data: 'email', name: 'email' },
 { data: 'phone', name: 'phone' },
 { data: 'approved', name: 'approved' },
+{ data: 'team', name: 'team.name' },
 @if($roleid < 3)
 { data: 'kecamatan_namakecamatan', name: 'kecamatan.namakecamatan' },
 @endif
