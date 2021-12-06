@@ -84,10 +84,10 @@ class InputPerolehanController extends Controller
                 return $total ? number_format($total,0,",",".") : '';
             });
             $table->editColumn('namauser', function ($row) {
-                return $row->namauser ? $row->namauser->name : '';
+                return $row->user ? $row->user->name : '';
             });
             $table->editColumn('namateam', function ($row) {
-                return $row->namateam ? $row->namateam->name : '';
+                return $row->team ? $row->team->name : '';
             });
             $table->addColumn('namabank', function ($row) {
                 return $row->namabank ? $row->namabank->namabank : '';
