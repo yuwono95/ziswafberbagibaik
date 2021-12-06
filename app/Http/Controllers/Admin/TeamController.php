@@ -19,8 +19,10 @@ class TeamController extends Controller
         abort_if(Gate::denies('team_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $teams = Team::with(['kecamatan', 'owner'])->get();
+		
+		$roleid = \App\Traits\MultiTenantModelTrait::getRoleId();
 
-        return view('admin.teams.index', compact('teams'));
+        return view('admin.teams.index', compact('teams', 'roleid'));
     }
 
     public function create()
