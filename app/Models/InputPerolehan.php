@@ -60,12 +60,12 @@ class InputPerolehan extends Model implements HasMedia
 
 	public function namauser()
 	{
-		return $this->belongsTo(User::class, 'name');
+		return $this->belongsTo(User::class, 'user_id');
 	}
 	
 	public function namateam()
 	{
-		return $this->belongsTo(Team::class, 'name');
+		return $this->belongsTo(Team::class, 'team_id');
 	}
 	
     public function namabank()
