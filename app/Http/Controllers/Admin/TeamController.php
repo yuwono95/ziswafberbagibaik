@@ -20,9 +20,11 @@ class TeamController extends Controller
 
         $teams = Team::with(['kecamatan', 'owner'])->get();
 		
+		$kecamatanid = auth()->user()->kecamatan_id;
+		
 		$roleid = \App\Traits\MultiTenantModelTrait::getRoleId();
 
-        return view('admin.teams.index', compact('teams', 'roleid'));
+        return view('admin.teams.index', compact('teams', 'kecamatanid', 'roleid'));
     }
 
     public function create()
