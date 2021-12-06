@@ -177,7 +177,7 @@
 { data: 'id', name: 'id' },
 { data: 'namadonatur', name: 'namadonatur' },
 { data: 'nomorhp', name: 'nomorhp' },
-{ data: 'zakatprofesi', name: 'zakatprofesi' },
+{ data: 'number_format(zakatprofesi,0,",",".")', name: 'zakatprofesi' },
 { data: 'zakatmaal', name: 'zakatmaal' },
 { data: 'infaq', name: 'infaq' },
 { data: 'sedekah', name: 'sedekah' },
