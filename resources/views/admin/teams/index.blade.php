@@ -28,9 +28,11 @@
                         <th>
                             {{ trans('cruds.team.fields.name') }}
                         </th>
+						@if($roleid < 3)
                         <th>
                             {{ trans('cruds.team.fields.kecamatan') }}
                         </th>
+						@endif
                         <th>
                             {{ trans('cruds.team.fields.owner') }}
                         </th>
@@ -51,9 +53,11 @@
                             <td>
                                 {{ $team->name ?? '' }}
                             </td>
+							@if($roleid < 3)
                             <td>
                                 {{ $team->kecamatan->namakecamatan ?? '' }}
                             </td>
+							@endif
                             <td>
                                 {{ $team->owner->name ?? '' }}
                             </td>
