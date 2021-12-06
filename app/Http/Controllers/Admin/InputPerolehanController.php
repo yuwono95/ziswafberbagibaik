@@ -83,11 +83,11 @@ class InputPerolehanController extends Controller
 				$total = $row->zakatprofesi + $row->zakatmaal + $row->infaq + $row->sedekah + $row->wakafpendidikan + $row->wakafproduktif + $row->infaqkesehatan;
                 return $total ? number_format($total,0,",",".") : '';
             });
-            $table->editColumn('user', function ($row) {
-                return $row->user ? $row->user->name : '';
+            $table->editColumn('namauser', function ($row) {
+                return $row->namauser ? $row->namauser->name : '';
             });
-            $table->editColumn('team', function ($row) {
-                return $row->team ? $row->team->name : '';
+            $table->editColumn('namateam', function ($row) {
+                return $row->namateam ? $row->namateam->name : '';
             });
             $table->addColumn('namabank', function ($row) {
                 return $row->namabank ? $row->namabank->namabank : '';
