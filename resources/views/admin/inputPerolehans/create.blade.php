@@ -9,6 +9,7 @@
     <div class="card-body">
         <form method="POST" action="{{ route("admin.input-perolehans.store") }}" enctype="multipart/form-data">
             @csrf
+			<input type="hidden" name="user_id" id="user_id" value="{{ $userid }}" />
             <div class="form-group">
                 <label for="namadonatur">{{ trans('cruds.inputPerolehan.fields.namadonatur') }}</label>
                 <input class="form-control {{ $errors->has('namadonatur') ? 'is-invalid' : '' }}" type="text" name="namadonatur" id="namadonatur" value="{{ old('namadonatur', '') }}">
