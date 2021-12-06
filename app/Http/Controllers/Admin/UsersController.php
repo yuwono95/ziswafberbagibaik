@@ -89,6 +89,9 @@ class UsersController extends Controller
             $table->editColumn('team_admin', function ($row) {
                 return '<input type="checkbox" disabled ' . ($row->team_admin ? 'checked' : null) . '>';
             });
+            $table->editColumn('team_name', function ($row) {
+                return $row->team ? $row->team_name : '';
+            });
             $table->addColumn('kecamatan_namakecamatan', function ($row) {
                 return $row->kecamatan ? $row->kecamatan->namakecamatan : '';
             });
