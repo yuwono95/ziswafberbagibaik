@@ -125,8 +125,10 @@ class InputPerolehanController extends Controller
         abort_if(Gate::denies('input_perolehan_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $namabanks = Bank::pluck('namabank', 'id')->prepend(trans('global.pleaseSelect'), '');
+		
+		$userid = auth()->user()->id;
 
-        return view('admin.inputPerolehans.create', compact('namabanks'));
+        return view('admin.inputPerolehans.create', compact('namabanks', 'userid'));
     }
 
     public function store(StoreInputPerolehanRequest $request)
