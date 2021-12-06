@@ -29,8 +29,9 @@ class TeamController extends Controller
 
         $kecamatans = Kecamatan::pluck('namakecamatan', 'id')->prepend(trans('global.pleaseSelect'), '');
 		$kecamatanid = auth()->user()->kecamatan_id;
+		$roleid = \App\Traits\MultiTenantModelTrait::getRoleId();
 
-        return view('admin.teams.create', compact('kecamatans', 'kecamatanid'));
+        return view('admin.teams.create', compact('kecamatans', 'kecamatanid', 'roleid'));
     }
 
     public function store(StoreTeamRequest $request)
@@ -51,8 +52,10 @@ class TeamController extends Controller
         $team->load('kecamatan', 'owner');
 		
 		$kecamatanid = auth()->user()->kecamatan_id;
+		
+		$roleid = \App\Traits\MultiTenantModelTrait::getRoleId();
 
-        return view('admin.teams.edit', compact('kecamatans', 'team', 'kecamatanid'));
+        return view('admin.teams.edit', compact('kecamatans', 'team', 'kecamatanid', 'roleid'));
     }
 
     public function update(UpdateTeamRequest $request, Team $team)
