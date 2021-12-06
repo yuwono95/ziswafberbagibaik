@@ -48,6 +48,7 @@ class InputPerolehan extends Model implements HasMedia
         'created_at',
         'updated_at',
         'deleted_at',
+		'user_id',
         'team_id',
     ];
 
@@ -57,6 +58,16 @@ class InputPerolehan extends Model implements HasMedia
         $this->addMediaConversion('preview')->fit('crop', 120, 120);
     }
 
+	public function namauser()
+	{
+		return $this->belongsTo(User::class, 'name');
+	}
+	
+	public function namateam()
+	{
+		return $this->belongsTo(Team::class, 'name');
+	}
+	
     public function namabank()
     {
         return $this->belongsTo(Bank::class, 'namabank_id');
