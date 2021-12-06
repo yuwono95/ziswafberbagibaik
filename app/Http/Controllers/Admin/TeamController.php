@@ -28,8 +28,9 @@ class TeamController extends Controller
         abort_if(Gate::denies('team_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $kecamatans = Kecamatan::pluck('namakecamatan', 'id')->prepend(trans('global.pleaseSelect'), '');
+		$kecamatanid = auth()->user()->kecamatan_id;
 
-        return view('admin.teams.create', compact('kecamatans'));
+        return view('admin.teams.create', compact('kecamatans', 'kecamatanid'));
     }
 
     public function store(StoreTeamRequest $request)
@@ -48,8 +49,10 @@ class TeamController extends Controller
         $kecamatans = Kecamatan::pluck('namakecamatan', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $team->load('kecamatan', 'owner');
+		
+		$kecamatanid = auth()->user()->kecamatan_id;
 
-        return view('admin.teams.edit', compact('kecamatans', 'team'));
+        return view('admin.teams.edit', compact('kecamatans', 'team', 'kecamatanid'));
     }
 
     public function update(UpdateTeamRequest $request, Team $team)
