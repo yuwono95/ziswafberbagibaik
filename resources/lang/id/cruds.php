@@ -197,7 +197,7 @@ return [
     ],
     'topTenAnggotum' => [
         'title'          => 'Top 10 Anggota',
-        'title_singular' => 'Top 10 Anggotum',
+        'title_singular' => 'Top 10 Anggota',
     ],
     'team' => [
         'title'          => 'Teams',
