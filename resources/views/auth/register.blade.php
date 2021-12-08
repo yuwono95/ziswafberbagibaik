@@ -144,14 +144,9 @@ document.getElementById('kecamatan_id').onchange = function(evt) {
 	selectTeams = document.getElementById('team_id');
 	selectTeams.length = 0;
 	
-	var opt = document.createElement('option');
-	opt.id = "";
-	opt.innerHTML = "Select Team (Group)";
-	selectTeams.appendChild(opt);
-	
 	for (let i = 0; i < groups.length; i++) {
 		if(groups[i][0] == value) {
-			opt = document.createElement('option');
+			var opt = document.createElement('option');
 			opt.value = groups[i][1];
 			opt.innerHTML = groups[i][2];
 			selectTeams.appendChild(opt);
