@@ -86,10 +86,10 @@
                                 <i class="fa fa-users fa-fw"></i>
                             </span>
                         </div>
-						<select class="form-control {{ $errors->has('kecamatan') ? 'is-invalid' : '' }}" name="kecamatan_id" required placeholder="{{ trans('cruds.user.fields.kecamatan') }}">
+						<select class="form-control {{ $errors->has('kecamatan') ? 'is-invalid' : '' }}" name="kecamatan_id" id="kecamatan_id" required placeholder="{{ trans('cruds.user.fields.kecamatan') }}">
 							<option value="" selected>Select Kecamatan</option>
 							@foreach($kecamatans as $id => $kecamatan)
-								<option value="{{ $id }}">{{ $kecamatan->namakecamatan }}</option>
+								<option value="{{ $kecamatan->id }}">{{ $kecamatan->namakecamatan }}</option>
 							@endforeach
 						</select>
 						@if($errors->has('kecamatan'))
@@ -105,11 +105,8 @@
                                 <i class="fa fa-users fa-fw"></i>
                             </span>
                         </div>
-						<select class="form-control {{ $errors->has('team') ? 'is-invalid' : '' }}" name="team_id" required placeholder="{{ trans('cruds.user.fields.team') }}">
+						<select class="form-control {{ $errors->has('team') ? 'is-invalid' : '' }}" name="team_id" id="team_id" required placeholder="{{ trans('cruds.user.fields.team') }}">
 							<option value="" selected>Select Team (Group)</option>
-							@foreach($teams as $id => $team)
-								<option value="{{ $id }}">{{ $team->name }}</option>
-							@endforeach
 						</select>
 						@if($errors->has('team'))
 							<div class="invalid-feedback">
@@ -128,4 +125,37 @@
 
     </div>
 </div>
+@endsection
+@section('scripts')
+@parent
+<script>
+let groups = [
+@foreach($kecamatans as $kecamatanid => $kecamatan)
+	@foreach($teams as $teamid => $team)
+		@if($kecamatanid == $team->kecamatan_id)
+			[ {{ $kecamatanid }}, {{ $teamid }}, "{{ $team->name }}" ],
+		@endif
+	@endforeach
+@endforeach
+];
+
+document.getElementById('kecamatan_id').onchange = function(evt) {
+	var value = evt.target.value;
+	selectTeams = document.getElementById('team_id');
+	selectTeams.length = 0;
+	
+	var opt = document.createElement('option');
+	opt.innerHTML = "Select Team (Group)";
+	selectTeams.appendChild(opt);
+	
+	for (let i = 0; i < groups.length; i++) {
+		if(groups[i][0] == value) {
+			opt = document.createElement('option');
+			opt.value = groups[i][1];
+			opt.innerHTML = groups[i][2];
+			selectTeams.appendChild(opt);
+		}
+	}
+}
+</script>
 @endsection
