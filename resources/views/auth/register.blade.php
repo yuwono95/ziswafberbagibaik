@@ -145,6 +145,7 @@ document.getElementById('kecamatan_id').onchange = function(evt) {
 	selectTeams.length = 0;
 	
 	var opt = document.createElement('option');
+	opt.id = "";
 	opt.innerHTML = "Select Team (Group)";
 	selectTeams.appendChild(opt);
 	
