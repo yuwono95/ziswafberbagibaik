@@ -101,13 +101,13 @@
                             </a>
                         </li>
                     @endcan
-                    @can('top_ten_anggotum_access')
+                    @can('top_ten_anggota_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.top-ten-anggota.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/top-ten-anggota") || request()->is("admin/top-ten-anggota/*") ? "c-active" : "" }}">
                                 <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
 
                                 </i>
-                                {{ trans('cruds.topTenAnggotum.title') }}
+                                {{ trans('cruds.topTenAnggota.title') }}
                             </a>
                         </li>
                     @endcan
