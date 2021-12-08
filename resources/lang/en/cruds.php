@@ -195,7 +195,7 @@ return [
             'deleted_at_helper' => ' ',
         ],
     ],
-    'topTenAnggotum' => [
+    'topTenAnggota' => [
         'title'          => 'Top 10 Anggota',
         'title_singular' => 'Top 10 Anggota',
     ],
