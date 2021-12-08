@@ -115,8 +115,9 @@
                     <td>
                         <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                     </td>
-					<td>
-					</td>
+                   <td>
+                        <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                    </td>
                     <td>
                         <select class="search">
                             <option value>{{ trans('global.all') }}</option>
@@ -201,8 +202,8 @@
 { data: 'wakafproduktif', name: 'wakafproduktif' },
 { data: 'infaqkesehatan', name: 'infaqkesehatan' },
 { data: 'total', name: 'total' },
-{ data: 'namauser', name: 'user' },
-{ data: 'namateam', name: 'team' },
+{ data: 'namauser', name: 'namauser.name' },
+{ data: 'namateam', name: 'namateam.name' },
 { data: 'namabank', name: 'namabank.namabank' },
 { data: 'buktitransfer', name: 'buktitransfer', sortable: false, searchable: false },
 { data: 'verifiedstatus_status', name: 'verifiedstatus.status' },
