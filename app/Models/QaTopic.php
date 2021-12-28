@@ -28,8 +28,8 @@ class QaTopic extends Model
     public function receiverOrCreator()
     {
         return $this->creator_id === Auth::user()->id
-        ? User::withTrashed()->find($this->receiver_id)
-        : User::withTrashed()->find($this->creator_id);
+        ? User::find($this->receiver_id)
+        : User::find($this->creator_id);
     }
 
     public static function unreadCount()
