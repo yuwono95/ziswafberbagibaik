@@ -24,6 +24,6 @@ class QaMessage extends Model
 
     public function sender()
     {
-        return $this->hasOne(User::class, 'id', 'sender_id')->withTrashed();
+        return $this->hasOne(User::class, 'id', 'sender_id');
     }
 }
