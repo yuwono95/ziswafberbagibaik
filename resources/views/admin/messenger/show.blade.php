@@ -5,7 +5,7 @@
 @section('messenger-content')
 <div class="row">
     <p>
-        @if($topic->receiverOrCreator() !== null && !$topic->receiverOrCreator()->trashed())
+        @if($topic->receiverOrCreator() !== null && !$topic->receiverOrCreator())
             <a href="{{ route('admin.messenger.reply', [$topic->id]) }}" class="btn btn-primary">
                 {{ trans('global.reply') }}
             </a>
