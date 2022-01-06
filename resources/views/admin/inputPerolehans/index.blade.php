@@ -41,6 +41,9 @@
                         {{ trans('cruds.inputPerolehan.fields.zakatmaal') }}
                     </th>
                     <th>
+                        {{ trans('cruds.inputPerolehan.fields.zakatfitrah') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.inputPerolehan.fields.infaq') }}
                     </th>
                     <th>
@@ -196,6 +199,7 @@
 { data: 'nomorhp', name: 'nomorhp' },
 { data: 'zakatprofesi', name: 'zakatprofesi' },
 { data: 'zakatmaal', name: 'zakatmaal' },
+{ data: 'zakatfitrah', name: 'zakatfitrah' },
 { data: 'infaq', name: 'infaq' },
 { data: 'sedekah', name: 'sedekah' },
 { data: 'wakafpendidikan', name: 'wakafpendidikan' },
