@@ -133,6 +133,8 @@ return [
             'zakatprofesi_helper'    => ' ',
             'zakatmaal'              => 'Zakat Maal',
             'zakatmaal_helper'       => ' ',
+            'zakatfitrah'            => 'Zakat Fitrah',
+            'zakatfitrah_helper'     => ' ',
             'infaq'                  => 'Infaq',
             'infaq_helper'           => ' ',
             'sedekah'                => 'Sedekah',
