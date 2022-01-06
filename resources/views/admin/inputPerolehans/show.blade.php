@@ -57,6 +57,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.inputPerolehan.fields.zakatfitrah') }}
+                        </th>
+                        <td>
+                            {{ number_format($inputPerolehan->zakatfitrah,0,",",".") }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.inputPerolehan.fields.infaq') }}
                         </th>
                         <td>
