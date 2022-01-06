@@ -14,6 +14,7 @@ class CreateInputPerolehansTable extends Migration
             $table->string('nomorhp')->nullable();
             $table->decimal('zakatprofesi', 15, 2)->nullable();
             $table->decimal('zakatmaal', 15, 2)->nullable();
+			$table->decimal('zakatfitrah', 15, 2)->nullable();
             $table->decimal('infaq', 15, 2)->nullable();
             $table->decimal('sedekah', 15, 2)->nullable();
             $table->decimal('wakafpendidikan', 15, 2)->nullable();
