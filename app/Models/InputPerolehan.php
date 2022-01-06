@@ -38,6 +38,7 @@ class InputPerolehan extends Model implements HasMedia
         'nomorhp',
         'zakatprofesi',
         'zakatmaal',
+		'zakatfitrah',
         'infaq',
         'sedekah',
         'wakafpendidikan',
