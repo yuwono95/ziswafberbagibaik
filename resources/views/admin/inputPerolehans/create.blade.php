@@ -51,6 +51,16 @@
                 <span class="help-block">{{ trans('cruds.inputPerolehan.fields.zakatmaal_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="zakatfitrah">{{ trans('cruds.inputPerolehan.fields.zakatfitrah') }}</label>
+                <input class="form-control {{ $errors->has('zakatfitrah') ? 'is-invalid' : '' }}" type="number" name="zakatfitrah" id="zakatfitrah" value="{{ old('zakatfitrah', '0') }}" step="0.01">
+                @if($errors->has('zakatfitrah'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('zakatfitrah') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.inputPerolehan.fields.zakatfitrah_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label for="infaq">{{ trans('cruds.inputPerolehan.fields.infaq') }}</label>
                 <input class="form-control {{ $errors->has('infaq') ? 'is-invalid' : '' }}" type="number" name="infaq" id="infaq" value="{{ old('infaq', '0') }}" step="0.01">
                 @if($errors->has('infaq'))
