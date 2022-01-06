@@ -64,6 +64,9 @@ class InputPerolehanController extends Controller
             $table->editColumn('zakatmaal', function ($row) {
                 return $row->zakatmaal ? number_format($row->zakatmaal,0,",",".") : '';
             });
+            $table->editColumn('zakatfitrah', function ($row) {
+                return $row->zakatfitrah ? number_format($row->zakatfitrah,0,",",".") : '';
+            });
             $table->editColumn('infaq', function ($row) {
                 return $row->infaq ? number_format($row->infaq,0,",",".") : '';
             });
@@ -80,7 +83,7 @@ class InputPerolehanController extends Controller
                 return $row->infaqkesehatan ? number_format($row->infaqkesehatan,0,",",".") : '';
             });
             $table->addColumn('total', function ($row) {
-				$total = $row->zakatprofesi + $row->zakatmaal + $row->infaq + $row->sedekah + $row->wakafpendidikan + $row->wakafproduktif + $row->infaqkesehatan;
+				$total = $row->zakatprofesi + $row->zakatmaal + $row->zakatfitrah + $row->infaq + $row->sedekah + $row->wakafpendidikan + $row->wakafproduktif + $row->infaqkesehatan;
                 return $total ? number_format($total,0,",",".") : '';
             });
             $table->editColumn('namauser', function ($row) {
